@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
-use App\Restaurant;
 use Illuminate\Http\Request;
 
-class Restaurant extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class Restaurant extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Restaurant  $restaurant
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Restaurant $restaurant)
+    public function show(Category $category)
     {
         //
     }
@@ -53,10 +53,10 @@ class Restaurant extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Restaurant  $restaurant
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Restaurant $restaurant)
+    public function edit(Category $category)
     {
         //
     }
@@ -65,10 +65,10 @@ class Restaurant extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Restaurant  $restaurant
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Restaurant $restaurant)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -76,10 +76,10 @@ class Restaurant extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Restaurant  $restaurant
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Restaurant $restaurant)
+    public function destroy(Category $category)
     {
         //
     }
