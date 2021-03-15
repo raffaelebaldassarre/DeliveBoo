@@ -124,7 +124,7 @@ class RestaurantController extends Controller
         $request['slug'] = Str::slug($request->name);
 
         if ($request->hasFile('image')) {
-            Storage::delete($restaurant->cover);
+            Storage::delete($restaurant->image);
             $data = $request->validate([
                 'name' => 'required',
                 'slug' => 'required',
@@ -163,6 +163,7 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
         $restaurant->delete();
+        Storage::delete($restaurant->image);
         return redirect()->route('admin.restaurants.index')->with('success', 'Ristorante Cancellato!');
     }
 }
