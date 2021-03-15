@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
 
-    protected $fillable = ["name", "address", "phone_number", "slug", "image", "category"];
+    protected $fillable = ["name", "address", "phone_number", "slug", "image", "user_id"];
 
     public function getRouteKeyName ()
     {
@@ -31,6 +31,6 @@ class Restaurant extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany("App\Category");
     }
 }

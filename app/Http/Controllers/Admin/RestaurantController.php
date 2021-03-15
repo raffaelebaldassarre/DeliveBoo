@@ -45,16 +45,15 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->categories);
         //dd($request->all());
 
         $user = auth()->user()->id;
 
         $request['slug'] = Str::slug($request->name);
+        $request['user_id'] = $user;
 
-        
-        //dd($user);
-
-        /* dd($request['slug']); */
+        //dd($request->all());
 
         $validateData = $request->validate([
             'name' => 'required',
@@ -75,10 +74,9 @@ class RestaurantController extends Controller
 
         $new_restaurant = Restaurant::orderBy("id", "desc")->first();
 
-        dd($new_restaurant);
+        //dd($new_restaurant);
        
         $new_restaurant->categories()->attach($request->categories);
-        $new_restaurant->user()->attach($user);
         
         //dd($new_restaurant);
 
@@ -93,7 +91,13 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        $user = auth()->user()->id;
+        if ($user !== $restaurant->user_id) {
+            return redirect("/");
+        } else {
+            return view("admin.restaurants.show", compact("restaurant"));
+        }
+        
     }
 
     /**
@@ -104,7 +108,8 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        $categories = Category::all();
+        return view("admin.restaurants.edit", compact("categories", "restaurant"));
     }
 
     /**
@@ -116,7 +121,37 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        $request['slug'] = Str::slug($request->name);
+
+        if ($request->hasFile('image')) {
+            Storage::delete($restaurant->cover);
+            $data = $request->validate([
+                'name' => 'required',
+                'slug' => 'required',
+                'image' => 'nullable | image',
+                'address' => 'required',
+                'phone_number' => 'required',
+                'categories' => 'required|exists:categories,id',
+                'user_id' => 'exists:users,id'
+            ]);
+            $image = Storage::put('restaurant_images', $request->image);
+            $data['image'] = $image;
+            $restaurant->update($data);
+            $restaurant->categories()->sync($request->categories);
+        }else{
+            $data = $request->validate([
+                'name' => 'required',
+                'slug' => 'required',
+                'image' => 'nullable | image',
+                'address' => 'required',
+                'phone_number' => 'required',
+                'categories' => 'required|exists:categories,id',
+                'user_id' => 'exists:users,id'
+            ]);
+            $restaurant->update($data);
+            $restaurant->categories()->sync($request->categories);
+        }
+        return redirect()->route('admin.restaurants.show', $restaurant);
     }
 
     /**
@@ -127,6 +162,7 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+        return redirect()->route('admin.restaurants.index')->with('success', 'Ristorante Cancellato!');
     }
 }
