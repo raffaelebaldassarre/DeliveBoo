@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Restaurant;
-use App\User;
 use App\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -21,8 +20,7 @@ class RestaurantController extends Controller
     {
         $user = auth()->user();
         $restaurants = $user->restaurants;
-        /* dd($restaurants); */
-        
+
         return view("admin.restaurants.index", compact("restaurants"));
     }
 
@@ -45,16 +43,12 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->categories);
-        //dd($request->all());
-
+    
         $user = auth()->user()->id;
-
         $request['slug'] = Str::slug($request->name);
         $request['user_id'] = $user;
 
-        //dd($request->all());
-
+        if(!$request->hasFile('image')){
         $validateData = $request->validate([
             'name' => 'required',
             'slug' => 'required',
@@ -63,23 +57,29 @@ class RestaurantController extends Controller
             'phone_number' => 'required',
             'categories' => 'required|exists:categories,id',
             'user_id' => 'exists:users,id'
-        ]);
-
-        $image = Storage::put('restaurant_images', $request->image);
-        $validateData['image'] = $image;
-
-        //dd($validateData);
+        ]); 
+        }
+        else{
+            $validateData = $request->validate([
+                'name' => 'required',
+                'slug' => 'required',
+                'image' => 'nullable | image',
+                'address' => 'required',
+                'phone_number' => 'required',
+                'categories' => 'required|exists:categories,id',
+                'user_id' => 'exists:users,id'
+            ]);
+    
+            $image = Storage::put('restaurant_images', $request->image);
+            $validateData['image'] = $image;
+        }
         
         Restaurant::create($validateData);
 
         $new_restaurant = Restaurant::orderBy("id", "desc")->first();
 
-        //dd($new_restaurant);
-       
         $new_restaurant->categories()->attach($request->categories);
         
-        //dd($new_restaurant);
-
         return redirect()->route("admin.restaurants.index", $new_restaurant);
     }
 
@@ -108,8 +108,13 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        $categories = Category::all();
-        return view("admin.restaurants.edit", compact("categories", "restaurant"));
+        $user = auth()->user()->id;
+        if ($user !== $restaurant->user_id) {
+            return redirect("/");
+        } else {
+            $categories = Category::all();
+            return view("admin.restaurants.edit", compact("categories", "restaurant"));
+        }
     }
 
     /**
