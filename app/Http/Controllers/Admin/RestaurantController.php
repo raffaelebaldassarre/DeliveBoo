@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Restaurant;
+use App\User;
+use App\Category;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -15,7 +19,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $restaurants = $user->restaurants;
+        /* dd($restaurants); */
+        
+        return view("admin.restaurants.index", compact("restaurants"));
     }
 
     /**
@@ -25,7 +33,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view("admin.restaurants.create", compact("categories"));
     }
 
     /**
@@ -36,7 +45,44 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+
+        $user = auth()->user()->id;
+
+        $request['slug'] = Str::slug($request->name);
+
+        
+        //dd($user);
+
+        /* dd($request['slug']); */
+
+        $validateData = $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'image' => 'nullable | image',
+            'address' => 'required',
+            'phone_number' => 'required',
+            'categories' => 'required|exists:categories,id',
+            'user_id' => 'exists:users,id'
+        ]);
+
+        $image = Storage::put('restaurant_images', $request->image);
+        $validateData['image'] = $image;
+
+        //dd($validateData);
+        
+        Restaurant::create($validateData);
+
+        $new_restaurant = Restaurant::orderBy("id", "desc")->first();
+
+        dd($new_restaurant);
+       
+        $new_restaurant->categories()->attach($request->categories);
+        $new_restaurant->user()->attach($user);
+        
+        //dd($new_restaurant);
+
+        return redirect()->route("admin.restaurants.index", $new_restaurant);
     }
 
     /**
