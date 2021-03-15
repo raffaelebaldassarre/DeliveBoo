@@ -14,7 +14,7 @@ class AddSlugToRestaurantsTable extends Migration
     public function up()
     {
         Schema::table('restaurants', function (Blueprint $table) {
-            $table->string("slug")->after("name")->unique();
+            $table->string("slug")->after("name")->unique()->nullable();
         });
     }
 

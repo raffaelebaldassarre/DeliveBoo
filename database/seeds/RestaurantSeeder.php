@@ -18,6 +18,7 @@ class RestaurantSeeder extends Seeder
             $newRestaurant->name = $faker->sentence(2, false);
             $newRestaurant->address = $faker->address();
             $newRestaurant->phone_number = $faker->phoneNumber();
+            $newRestaurant->slug = Str::slug($newRestaurant->name);
             $newRestaurant->save();
         }
     }
