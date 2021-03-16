@@ -66,6 +66,7 @@ class DishController extends Controller
                 'ingredients' => 'required',
                 'cover' => 'nullable | image',
                 'price' => 'required | numeric | max:999.99',
+                'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
             ]); 
             $validateData['restaurant_id'] = $id;
@@ -76,6 +77,7 @@ class DishController extends Controller
                 'ingredients' => 'required',
                 'cover' => 'nullable | image',
                 'price' => 'required | numeric | max:999.99',
+                'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
             ]);
     
@@ -149,6 +151,7 @@ class DishController extends Controller
                 'ingredients' => 'required',
                 'cover' => 'nullable | image',
                 'price' => 'required | numeric | max:999.99',
+                'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
             ]); 
             $cover = Storage::put('dishes_cover', $request->cover);
@@ -161,6 +164,7 @@ class DishController extends Controller
                 'ingredients' => 'required',
                 'cover' => 'nullable | image',
                 'price' => 'required | numeric | max:999.99',
+                'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
             ]);
     
@@ -177,6 +181,10 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $rest_id = $dish->restaurant_id;
+        $restaurants = Restaurant::where('id', $rest_id)->first();
+        $dish->delete();
+        Storage::delete($dish->cover);
+        return redirect()->route('admin.dishes.index',['slug' => $restaurants->slug])->with('success', 'Piatto Cancellato!');
     }
 }

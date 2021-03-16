@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Nooooo</button>
-                                        <form action="{{-- {{ route('admin.restaurants.destroy', ['restaurant' => $restaurant->slug]) }} --}}"
+                                        <form action="{{ route('admin.dishes.destroy', ['dish' => $dish->id]) }}"
                                             method="post">
                                             @csrf
                                             @method('DELETE')
