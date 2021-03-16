@@ -7,6 +7,8 @@ use App\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class DishController extends Controller
@@ -63,9 +65,7 @@ class DishController extends Controller
                 'name' => 'required',
                 'ingredients' => 'required',
                 'cover' => 'nullable | image',
-                'price' => 'required | numeric',
-                'available' => 'required | boolean',
-                'allergens' => 'required',
+                'price' => 'required | numeric | max:999.99',
                 'restaurant_id' => 'exists:restaurants,id'
             ]); 
             $validateData['restaurant_id'] = $id;
@@ -75,9 +75,7 @@ class DishController extends Controller
                 'name' => 'required',
                 'ingredients' => 'required',
                 'cover' => 'nullable | image',
-                'price' => 'required | numeric',
-                'available' => 'required | boolean',
-                'allergens' => 'required',
+                'price' => 'required | numeric | max:999.99',
                 'restaurant_id' => 'exists:restaurants,id'
             ]);
     
@@ -101,14 +99,16 @@ class DishController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function show(Dish $dish)
+    public function show($restaurant, Dish $dish, Request $request)
     {
-        //
+        $restaurant = Restaurant::where('slug', $request->slug)->first();
+
+        //dd($restaurant);
         $user = Auth::id();
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
-            return view("admin.restaurants.show", compact("restaurant"));
+            return view("admin.dishes.show", compact("dish", "restaurant"));
         }
     }
 
@@ -118,9 +118,16 @@ class DishController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dish $dish)
+    public function edit($restaurant, Dish $dish, Request $request)
     {
-        //
+        $restaurant = Restaurant::where('slug', $request->slug)->first();
+
+        $user = Auth::id();
+        if ($user !== $restaurant->user_id) {
+            return redirect("/");
+        } else {
+            return view("admin.dishes.edit", compact("dish", "restaurant"));
+        }
     }
 
     /**
@@ -132,7 +139,34 @@ class DishController extends Controller
      */
     public function update(Request $request, Dish $dish)
     {
-        //
+        $rest_id = $dish->restaurant_id;
+        $restaurants = Restaurant::where('id', $rest_id)->first();
+        //dd($restaurants);
+        if($request->hasFile('cover')){
+            Storage::delete($dish->cover);
+            $validateData = $request->validate([
+                'name' => 'required',
+                'ingredients' => 'required',
+                'cover' => 'nullable | image',
+                'price' => 'required | numeric | max:999.99',
+                'restaurant_id' => 'exists:restaurants,id'
+            ]); 
+            $cover = Storage::put('dishes_cover', $request->cover);
+            $validateData['cover'] = $cover;
+            $dish->update($validateData);
+        }
+            else{
+            $validateData = $request->validate([
+                'name' => 'required',
+                'ingredients' => 'required',
+                'cover' => 'nullable | image',
+                'price' => 'required | numeric | max:999.99',
+                'restaurant_id' => 'exists:restaurants,id'
+            ]);
+    
+            $dish->update($validateData);
+        }
+        return redirect()->route('admin.dishes.show', ['slug' => $restaurants->slug, 'dish' => $dish->id]);
     }
 
     /**
