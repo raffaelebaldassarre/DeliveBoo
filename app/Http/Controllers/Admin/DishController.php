@@ -26,7 +26,7 @@ class DishController extends Controller
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
-            return view("admin.dishes.index", compact("dishes"));
+            return view("admin.dishes.index", compact("dishes", "restaurant"));
         }
         /* dd($restaurant->dishes); */
     }
@@ -36,9 +36,12 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        /* dd($request); */
+        $restaurant = Restaurant::where('slug', $request->slug)->first();
+        
+        return view("admin.dishes.create", compact('restaurant'));
     }
 
     /**
@@ -49,7 +52,47 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* dd($request); */
+        /* $restaurant = Restaurant::where('slug', $request->slug)->first(); */
+        $restaurant = Restaurant::where('id', $request->id)->first();
+        $id = $restaurant->id;
+        /* dd($id); */
+
+        if(!$request->hasFile('cover')){
+            $validateData = $request->validate([
+                'name' => 'required',
+                'ingredients' => 'required',
+                'cover' => 'nullable | image',
+                'price' => 'required | numeric',
+                'available' => 'required | boolean',
+                'allergens' => 'required',
+                'restaurant_id' => 'exists:restaurants,id'
+            ]); 
+            $validateData['restaurant_id'] = $id;
+        }
+            else{
+            $validateData = $request->validate([
+                'name' => 'required',
+                'ingredients' => 'required',
+                'cover' => 'nullable | image',
+                'price' => 'required | numeric',
+                'available' => 'required | boolean',
+                'allergens' => 'required',
+                'restaurant_id' => 'exists:restaurants,id'
+            ]);
+    
+            $cover = Storage::put('dishes_cover', $request->cover);
+            $validateData['cover'] = $cover;
+            $validateData['restaurant_id'] = $id;
+        }
+            
+        /* dd($validateData); */
+        Dish::create($validateData);
+
+        /* $new_dish = Dish::orderBy("name", "desc")->first(); */
+
+        return redirect()->route('admin.dishes.index', ['slug' => $restaurant->slug]);
+
     }
 
     /**

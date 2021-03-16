@@ -19,6 +19,6 @@
     </h3>
 
     <a href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i></a>
-    <a href="{{route('admin.dishes.index', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i>Inserisci piatto</a>
+    <a href="{{route('admin.dishes.index', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i>Visualizza i piatti del tuo ristorante</a>
 
 @endsection
