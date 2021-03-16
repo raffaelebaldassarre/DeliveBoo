@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->string('lastname', 30);
             $table->string('address');
             $table->string('phone_number', 50);
-            $table->string('braintree_id', 50)->nullable();
+            $table->string('payment_id', 50)->nullable();
             $table->timestamps();
         });
     }

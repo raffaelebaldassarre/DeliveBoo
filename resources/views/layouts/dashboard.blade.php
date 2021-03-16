@@ -83,8 +83,8 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('admin.index')}}"><i class="fas fa-tachometer-alt    "></i> Dashboard</a></li>
                         <li><a href="{{ route('admin.restaurants.index')}}"><i class="fas fa-utensils"></i> Ristoranti</a></li>
-                        <li><a href="{{-- {{ route('admin.dishes.index')}} --}}"><i class="far fa-folder"></i> Piatti</a></li>
-                    </ul>
+{{--                         <li><a href="{{ route('admin.dishes.index')}}"><i class="far fa-folder"></i> Piatti</a></li>
+ --}}                    </ul>
                 </div>
             <main class="col-xs-12 col-md-9 col-lg-10">
                 @yield('content')

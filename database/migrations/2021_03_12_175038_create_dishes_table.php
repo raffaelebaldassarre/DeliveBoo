@@ -18,7 +18,7 @@ class CreateDishesTable extends Migration
             $table->string('name', 50);
             $table->string('ingredients');
             $table->float('price',5,2);
-            $table->boolean('available')->default(0);
+            $table->boolean('available')->default(1);
             $table->string('allergens')->nullable();
             $table->string('cover')->nullable();
             $table->timestamps();

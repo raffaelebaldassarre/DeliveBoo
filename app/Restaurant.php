@@ -33,4 +33,14 @@ class Restaurant extends Model
     {
         return $this->belongsToMany("App\Category");
     }
+
+    /**
+     * Get all of the comments for the Restaurant
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function dishes()
+    {
+        return $this->hasMany(Dish::class);
+    }
 }
