@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dish extends Model
 {
-    //
+    protected $fillable = ["name", "ingredients", "price", "available", "allergens", "cover", "restaurant_id"];
     /**
      * Get the restarant that owns the Dish
      *
