@@ -24,6 +24,13 @@
                     <td>{{ $dish->ingredients }}</td>
                     <td>{{ $dish->price }} €</td>
                     
+                    {{-- <td>
+                        @if($dish->available == 1)
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked> 
+                        @else
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        @endif
+                    </td> --}}
                     @if ($dish->available == 1)
                         <td>Disponibile</td>
                     @else
@@ -36,8 +43,8 @@
                     
 
                     <td>
-                        <a href="{{-- {{route('admin.restaurants.show', ['restaurant' => $restaurant->slug])}} --}}" class="btn btn-primary"><i class="fas fa-eye fa-xs fa-fw"></i></a>
-                        <a href="{{-- {{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}} --}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i></a>
+                        <a href="{{route('admin.dishes.show', ['slug' => $restaurant->slug, 'dish' => $dish->id])}}" class="btn btn-primary"><i class="fas fa-eye fa-xs fa-fw"></i></a>
+                        <a href="{{route('admin.dishes.edit', ['slug' => $restaurant->slug, 'dish' => $dish->id])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i></a>
                         <!-- Modal -->
                         <!-- Button trigger modal -->
                         <a class="btn btn-danger" data-toggle="modal" data-target="#delete-{{ $dish->slug }}"
