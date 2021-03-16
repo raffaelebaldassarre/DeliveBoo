@@ -8,6 +8,7 @@ use App\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -18,7 +19,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $restaurants = $user->restaurants;
 
         return view("admin.restaurants.index", compact("restaurants"));
@@ -44,7 +45,7 @@ class RestaurantController extends Controller
     public function store(Request $request)
     {
     
-        $user = auth()->user()->id;
+        $user = Auth::id();
         $request['slug'] = Str::slug($request->name);
         $request['user_id'] = $user;
 
@@ -91,7 +92,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $user = auth()->user()->id;
+        $user = Auth::id();
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
@@ -108,7 +109,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        $user = auth()->user()->id;
+        $user = Auth::id();
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
