@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Restaurant;
+use App\Dish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,10 +62,12 @@ class OrderController extends Controller
     {
       $restaurant = Restaurant::where('slug', $request->slug)->first();
       $user = Auth::id();
+      $dishes = $order->dishes;
+
       if ($user !== $restaurant->user_id) {
           return redirect("/");
       } else {
-        return view("admin.orders.show", compact('order', 'restaurant'));
+        return view("admin.orders.show", compact('order', 'restaurant', 'dishes'));
       }
     }
 
