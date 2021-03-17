@@ -19,3 +19,10 @@ Route::get('restaurants', function(){
     'data'=>App\Restaurant::all()
   ], 200);
 });
+
+Route::get('categories', function(){
+  return response ()->json([
+    'success'=>true,
+    'data'=>App\Category::all()
+  ], 200);
+});

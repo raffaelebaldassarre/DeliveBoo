@@ -31,12 +31,51 @@ const app = new Vue({
     el: '#app',
     data: {
       restaurants: [],
+      categories: [],
+      selectedCat: [],
     },
+    methods:{
+      chooseCategory(){
+        console.log(this.selectedCat);
+        if (this.selectedCat.length > 3) {
+          this.selectedCat.pop();
+          console.log(this.selectedCat);
+        } 
+      }
+    },
+    
     mounted() {
-      axios.get('api/restaurants').then(response=> {
-        console.log(response.data.data);
-        this.restaurants = response.data.data;
-        console.log(this.restaurants);
-      })
+        axios.get('api/restaurants').then(response=> {
+          console.log(response.data.data);
+          this.restaurants = response.data.data;
+          console.log(this.restaurants);
+        })
+        axios.get('api/categories').then(response=> {
+          console.log(response.data.data);
+          this.categories = response.data.data;
+          console.log(this.categories);
+          
+        })
+    },
+    /* computed: {
+      filteredItems() {
+        return this.items.filter(item => {
+           return item.type.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+        })
+      }
+    } */
+});
+$(document).ready(function() {
+
+  var last_valid_selection = null;
+
+  $('#categories_list').change(function(event) {
+
+    if ($(this).val().length > 3) {
+
+      $(this).val(last_valid_selection);
+    } else {
+      last_valid_selection = $(this).val();
     }
+  });
 });
