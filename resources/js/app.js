@@ -29,4 +29,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    data: {
+      restaurants: [],
+    },
+    mounted() {
+      axios.get('api/restaurants').then(response=> {
+        console.log(response.data.data);
+        this.restaurants = response.data.data;
+        console.log(this.restaurants);
+      })
+    }
 });
