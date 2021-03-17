@@ -42,7 +42,7 @@ class DishController extends Controller
     {
         /* dd($request); */
         $restaurant = Restaurant::where('slug', $request->slug)->first();
-        
+
         return view("admin.dishes.create", compact('restaurant'));
     }
 
@@ -68,7 +68,7 @@ class DishController extends Controller
                 'price' => 'required | numeric | max:999.99',
                 'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
-            ]); 
+            ]);
             $validateData['restaurant_id'] = $id;
         }
             else{
@@ -80,12 +80,12 @@ class DishController extends Controller
                 'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
             ]);
-    
+
             $cover = Storage::put('dishes_cover', $request->cover);
             $validateData['cover'] = $cover;
             $validateData['restaurant_id'] = $id;
         }
-            
+
         /* dd($validateData); */
         Dish::create($validateData);
 
@@ -153,7 +153,7 @@ class DishController extends Controller
                 'price' => 'required | numeric | max:999.99',
                 'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
-            ]); 
+            ]);
             $cover = Storage::put('dishes_cover', $request->cover);
             $validateData['cover'] = $cover;
             $dish->update($validateData);
@@ -167,7 +167,7 @@ class DishController extends Controller
                 'allergens' => 'nullable',
                 'restaurant_id' => 'exists:restaurants,id'
             ]);
-    
+
             $dish->update($validateData);
         }
         return redirect()->route('admin.dishes.show', ['slug' => $restaurants->slug, 'dish' => $dish->id]);

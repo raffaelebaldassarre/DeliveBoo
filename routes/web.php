@@ -31,6 +31,7 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
     Route::put('restaurants/dishes/{dish}', 'DishController@update')->name('dishes.update');
     Route::patch('restaurants/dishes/{dish}', 'DishController@update')->name('dishes.update');
     Route::delete('restaurants/dishes/{dish}', 'DishController@destroy')->name('dishes.destroy');
+
+    Route::get('restaurants/{slug}/orders', 'OrderController@index')->name('orders.index');
+    Route::get('restaurants/{slug}/orders/{order}', 'OrderController@show')->name('orders.show');
 });
-
-

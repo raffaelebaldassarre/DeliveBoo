@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -13,9 +15,19 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+      $restaurant = Restaurant::where('slug', $request->slug)->first();
+
+      $orders = $restaurant->orders;
+      $user = Auth::id();
+      if ($user !== $restaurant->user_id) {
+          return redirect("/");
+      } else {
+        return view("admin.orders.index", compact("orders", "restaurant"));
+      }
+
     }
 
     /**
@@ -45,9 +57,15 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($restaurant, Order $order, Request $request)
     {
-        //
+      $restaurant = Restaurant::where('slug', $request->slug)->first();
+      $user = Auth::id();
+      if ($user !== $restaurant->user_id) {
+          return redirect("/");
+      } else {
+        return view("admin.orders.show", compact('order', 'restaurant'));
+      }
     }
 
     /**
