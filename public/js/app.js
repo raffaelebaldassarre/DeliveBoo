@@ -49867,7 +49867,19 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    restaurants: []
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('api/restaurants').then(function (response) {
+      console.log(response.data.data);
+      _this.restaurants = response.data.data;
+      console.log(_this.restaurants);
+    });
+  }
 });
 
 /***/ }),
@@ -50004,8 +50016,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
