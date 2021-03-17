@@ -23,10 +23,10 @@
                     <td>{{ $dish->name }}</td>
                     <td>{{ $dish->ingredients }}</td>
                     <td>{{ $dish->price }} €</td>
-                    
+
                     {{-- <td>
                         @if($dish->available == 1)
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked> 
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
                         @else
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                         @endif
@@ -36,11 +36,11 @@
                     @else
                         <td>Non disponibile</td>
                     @endif
-                    
+
                     <td>{{ $dish->allergens }}</td>
                     <td><img src="{{asset('storage/' . $dish->cover)}}" alt="" style="height: 150px"></td>
 
-                    
+
 
                     <td>
                         <a href="{{route('admin.dishes.show', ['slug' => $restaurant->slug, 'dish' => $dish->id])}}" class="btn btn-primary"><i class="fas fa-eye fa-xs fa-fw"></i></a>
@@ -80,7 +80,7 @@
                         </div>
                     </td>
                 </tr>
-                    
+
                 @endforeach
             </tbody>
         </table>
