@@ -49869,7 +49869,19 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    restaurants: []
+    restaurants: [],
+    categories: [],
+    selectedCat: []
+  },
+  methods: {
+    chooseCategory: function chooseCategory() {
+      console.log(this.selectedCat);
+
+      if (this.selectedCat.length > 3) {
+        this.selectedCat.pop();
+        console.log(this.selectedCat);
+      }
+    }
   },
   mounted: function mounted() {
     var _this = this;
@@ -49879,7 +49891,30 @@ var app = new Vue({
       _this.restaurants = response.data.data;
       console.log(_this.restaurants);
     });
+    axios.get('api/categories').then(function (response) {
+      console.log(response.data.data);
+      _this.categories = response.data.data;
+      console.log(_this.categories);
+    });
   }
+  /* computed: {
+    filteredItems() {
+      return this.items.filter(item => {
+         return item.type.toLowerCase().indexOf(this.search.toLowerCase()) > -1
+      })
+    }
+  } */
+
+});
+$(document).ready(function () {
+  var last_valid_selection = null;
+  $('#categories_list').change(function (event) {
+    if ($(this).val().length > 3) {
+      $(this).val(last_valid_selection);
+    } else {
+      last_valid_selection = $(this).val();
+    }
+  });
 });
 
 /***/ }),
@@ -50016,8 +50051,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\DeliveBoo\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Mariapia\Desktop\ProgettoFinale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Mariapia\Desktop\ProgettoFinale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
