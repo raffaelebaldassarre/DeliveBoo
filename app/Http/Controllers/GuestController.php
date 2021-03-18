@@ -14,8 +14,10 @@ class GuestController extends Controller
         return view('guests.welcome', compact('categories', 'restaurants'));
     }
 
-    public function restaurant()
+    public function restaurant(Request $request)
     {
-        return view('guests.restaurant');
+        $restaurant = Restaurant::where('slug', $request->slug)->first();
+        $dishes = $restaurant->dishes;
+        return view('guests.restaurant', compact('dishes'));
     }
 }
