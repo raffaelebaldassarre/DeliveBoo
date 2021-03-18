@@ -4,19 +4,19 @@
 
 <h1>DeliveBoo</h1>
 
-<div class="container" :class="{'loading': loading}">
+<div class="container">
     <div class="row">
         <div class="col-lg-3 mb-4">
             <h1 class="mt-4">Filters</h1>
 
             <h3 class="mt-2">Categories</h3>
             <div class="form-check" v-for="(category, index) in categories">
-                <input class="form-check-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="selected.categories">
+                <input class="form-check-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="categories_rest">
                 <label class="form-check-label" :for="'category' + index">
-                    @{{ category.name }} (@{{ category.restaurants_count }})
+                    @{{ category.name }}
                 </label>
             </div>
-
+            <h3>La tua ricerca ha trovato: @{{restaurants.length}} ristoranti</h3>
         </div>
         <div class="col-lg-9">
             <div class="row mt-4">
@@ -28,6 +28,7 @@
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="#">@{{ restaurant.name }}</a>
+                                <li v-for="category in restaurant.categories">@{{category.name}}</li>
                             </h4>
                         </div>
                     </div>

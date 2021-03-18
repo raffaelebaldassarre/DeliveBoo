@@ -30,12 +30,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     data: {
-      restaurants: [],
-      categories: [],
-      loading: true,
-      selected: {
-        categories: [],
-      }
+      restaurants: null,
+      categories: null,
+      categories_rest: [],
     },
 
     mounted() {
@@ -46,8 +43,8 @@ const app = new Vue({
     },
 
     watch: {
-      selected: {
-        handler: function () {
+      categories_rest: {
+        handler() {
           this.loadCategories();
           this.loadRestaurants();
         },
@@ -56,22 +53,19 @@ const app = new Vue({
     },
 
     methods:{
-
       loadCategories () {
-        axios.get('/api/categories', {
-          params: _.omit(this.selected, 'category_restaurant')
-        }).then((response) => {
+        axios.get('/api/categories')
+        .then((response) => {
           this.categories = response.data.data;
           console.log(this.categories);
         })
       },
 
       loadRestaurants () {
-        axios.get('/api/restaurants', {
-          params: this.selected
-        }).then((response) => {
+        axios.get('/api/restaurants',
+          { params: { categories_rest: this.categories_rest} })
+          .then((response) => {
           this.restaurants = response.data.data;
-          this.loading = false;
           console.log(this.restaurants);
         })
       }
