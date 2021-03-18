@@ -16,7 +16,20 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::withFilters()->get();
+    
+        $selectedCategories = request()->input('categories_rest');
+
+        $query = Restaurant::with('categories');
+
+        if ( $selectedCategories){
+            foreach( $selectedCategories as $category_id){
+                $query->whereHas('categories', function($q) use ($category_id){
+                    $q->where('id', $category_id);
+                });
+            }
+        }
+
+        $restaurants = $query->get();
 
         return RestaurantResource::collection($restaurants);
     }

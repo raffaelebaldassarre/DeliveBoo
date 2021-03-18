@@ -48,17 +48,4 @@ class Restaurant extends Model
     {
         return $this->hasMany(Order::class);
     }
-
-    public function scopeWithFilters($query)
-    {
-        return $query->when(count(request()->input('categories', [])), function ($query){
-            $query->whereIn('category_id', request()->input('category_restaurant', []));
-        });
-
-            
-
-            /* $restaurants = Restaurant::whereHas('categories', function($query) use($category_id) {
-                $query->whereIn('id', $category_id);
-            })->get(); */
-    }
 }

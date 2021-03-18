@@ -49869,19 +49869,16 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    restaurants: [],
-    categories: [],
-    loading: true,
-    selected: {
-      categories: []
-    }
+    restaurants: null,
+    categories: null,
+    categories_rest: []
   },
   mounted: function mounted() {
     this.loadCategories();
     this.loadRestaurants();
   },
   watch: {
-    selected: {
+    categories_rest: {
       handler: function handler() {
         this.loadCategories();
         this.loadRestaurants();
@@ -49893,9 +49890,7 @@ var app = new Vue({
     loadCategories: function loadCategories() {
       var _this = this;
 
-      axios.get('/api/categories', {
-        params: _.omit(this.selected, 'category_restaurant')
-      }).then(function (response) {
+      axios.get('/api/categories').then(function (response) {
         _this.categories = response.data.data;
         console.log(_this.categories);
       });
@@ -49904,10 +49899,11 @@ var app = new Vue({
       var _this2 = this;
 
       axios.get('/api/restaurants', {
-        params: this.selected
+        params: {
+          categories_rest: this.categories_rest
+        }
       }).then(function (response) {
         _this2.restaurants = response.data.data;
-        _this2.loading = false;
         console.log(_this2.restaurants);
       });
     }
@@ -50048,8 +50044,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
