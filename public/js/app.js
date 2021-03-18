@@ -49871,50 +49871,47 @@ var app = new Vue({
   data: {
     restaurants: [],
     categories: [],
-    selectedCat: []
-  },
-  methods: {
-    chooseCategory: function chooseCategory() {
-      console.log(this.selectedCat);
-
-      if (this.selectedCat.length > 3) {
-        this.selectedCat.pop();
-        console.log(this.selectedCat);
-      }
+    loading: true,
+    selected: {
+      categories: []
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    this.loadCategories();
+    this.loadRestaurants();
+  },
+  watch: {
+    selected: {
+      handler: function handler() {
+        this.loadCategories();
+        this.loadRestaurants();
+      },
+      deep: true
+    }
+  },
+  methods: {
+    loadCategories: function loadCategories() {
+      var _this = this;
 
-    axios.get('api/restaurants').then(function (response) {
-      console.log(response.data.data);
-      _this.restaurants = response.data.data;
-      console.log(_this.restaurants);
-    });
-    axios.get('api/categories').then(function (response) {
-      console.log(response.data.data);
-      _this.categories = response.data.data;
-      console.log(_this.categories);
-    });
+      axios.get('/api/categories', {
+        params: _.omit(this.selected, 'category_restaurant')
+      }).then(function (response) {
+        _this.categories = response.data.data;
+        console.log(_this.categories);
+      });
+    },
+    loadRestaurants: function loadRestaurants() {
+      var _this2 = this;
+
+      axios.get('/api/restaurants', {
+        params: this.selected
+      }).then(function (response) {
+        _this2.restaurants = response.data.data;
+        _this2.loading = false;
+        console.log(_this2.restaurants);
+      });
+    }
   }
-  /* computed: {
-    filteredItems() {
-      return this.items.filter(item => {
-         return item.type.toLowerCase().indexOf(this.search.toLowerCase()) > -1
-      })
-    }
-  } */
-
-});
-$(document).ready(function () {
-  var last_valid_selection = null;
-  $('#categories_list').change(function (event) {
-    if ($(this).val().length > 3) {
-      $(this).val(last_valid_selection);
-    } else {
-      last_valid_selection = $(this).val();
-    }
-  });
 });
 
 /***/ }),
@@ -50051,8 +50048,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Mariapia\Desktop\ProgettoFinale\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Mariapia\Desktop\ProgettoFinale\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

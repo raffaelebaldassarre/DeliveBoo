@@ -13,16 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('restaurants', function(){
-  return response ()->json([
-    'success'=>true,
-    'data'=>App\Restaurant::all()
-  ], 200);
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+  return $request->user();
 });
 
-Route::get('categories', function(){
-  return response ()->json([
-    'success'=>true,
-    'data'=>App\Category::all()
-  ], 200);
-});
+Route::get('restaurants', 'Api\RestaurantController@index');
+Route::get('categories', 'Api\CategoryController@index');
