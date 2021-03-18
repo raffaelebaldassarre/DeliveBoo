@@ -32,50 +32,49 @@ const app = new Vue({
     data: {
       restaurants: [],
       categories: [],
-      selectedCat: [],
+      loading: true,
+      selected: {
+        categories: [],
+      }
     },
+
+    mounted() {
+
+      this.loadCategories();
+      this.loadRestaurants();
+        
+    },
+
+    watch: {
+      selected: {
+        handler: function () {
+          this.loadCategories();
+          this.loadRestaurants();
+        },
+        deep: true
+      }
+    },
+
     methods:{
-      chooseCategory(){
-        console.log(this.selectedCat);
-        if (this.selectedCat.length > 3) {
-          this.selectedCat.pop();
-          console.log(this.selectedCat);
-        } 
+
+      loadCategories () {
+        axios.get('/api/categories', {
+          params: _.omit(this.selected, 'category_restaurant')
+        }).then((response) => {
+          this.categories = response.data.data;
+          console.log(this.categories);
+        })
+      },
+
+      loadRestaurants () {
+        axios.get('/api/restaurants', {
+          params: this.selected
+        }).then((response) => {
+          this.restaurants = response.data.data;
+          this.loading = false;
+          console.log(this.restaurants);
+        })
       }
     },
     
-    mounted() {
-        axios.get('api/restaurants').then(response=> {
-          console.log(response.data.data);
-          this.restaurants = response.data.data;
-          console.log(this.restaurants);
-        })
-        axios.get('api/categories').then(response=> {
-          console.log(response.data.data);
-          this.categories = response.data.data;
-          console.log(this.categories);
-          
-        })
-    },
-    /* computed: {
-      filteredItems() {
-        return this.items.filter(item => {
-           return item.type.toLowerCase().indexOf(this.search.toLowerCase()) > -1
-        })
-      }
-    } */
-});
-$(document).ready(function() {
-
-  var last_valid_selection = null;
-
-  $('#categories_list').change(function(event) {
-
-    if ($(this).val().length > 3) {
-
-      $(this).val(last_valid_selection);
-    } else {
-      last_valid_selection = $(this).val();
-    }
-  });
 });
