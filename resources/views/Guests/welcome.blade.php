@@ -23,11 +23,11 @@
                 <div class="col-lg-4 col-md-6 mb-4" v-for="restaurant in restaurants">
                     <div class="card h-100">
                         <a href="#">
-                            <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+                            <img class="card-img-top" :src="`storage/${restaurant.image}`" alt="">
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">@{{ restaurant.name }}</a>
+                                <a :href="'/guests/restaurant/' + restaurant.slug">@{{ restaurant.name }}</a>
                                 <li v-for="category in restaurant.categories">@{{category.name}}</li>
                             </h4>
                         </div>

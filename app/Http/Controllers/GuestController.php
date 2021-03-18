@@ -13,4 +13,9 @@ class GuestController extends Controller
         $restaurants = Restaurant::all();
         return view('guests.welcome', compact('categories', 'restaurants'));
     }
+
+    public function restaurant()
+    {
+        return view('guests.restaurant');
+    }
 }
