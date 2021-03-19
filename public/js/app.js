@@ -49871,7 +49871,11 @@ var app = new Vue({
   data: {
     restaurants: null,
     categories: null,
-    categories_rest: []
+    categories_rest: [],
+    orderCart: [],
+    arrayTotalDishPrice: [],
+    totalPrice: 0,
+    dishQuantity: 1
   },
   mounted: function mounted() {
     this.loadCategories();
@@ -49887,24 +49891,72 @@ var app = new Vue({
     }
   },
   methods: {
-    loadCategories: function loadCategories() {
+    takeOrder: function takeOrder(dish) {
       var _this = this;
 
+      $cart = document.getElementById("cart");
+      /*  console.log($cart); */
+
+      $cart.style.display = "flex";
+      this.orderCart.push(dish);
+      /* console.log(dish); */
+
+      /* for(let i = 0; i < this.orderCart.length; i++){
+        this.orderCart[i].quantityOrdered = this.dishQuantity;
+      } */
+
+      this.orderCart.forEach(function (elem) {
+        Vue.set(elem, "quantityOrdered", _this.dishQuantity);
+        Vue.set(elem, "totalDishPrice", elem.price);
+      });
+      this.totalOrderPrice(dish.totalDishPrice);
+      console.log(this.orderCart);
+    },
+    minusDish: function minusDish(item) {
+      if (item.quantityOrdered <= 1) {
+        item.quantityOrdered = 1;
+      } else {
+        item.quantityOrdered -= 1;
+      }
+
+      this.minPrice(item);
+      this.totalOrderPrice(item.totalDishPrice);
+      console.log(item.quantityOrdered);
+    },
+    moreDish: function moreDish(item) {
+      console.log(item);
+      item.quantityOrdered += 1;
+      this.totalOrderPrice(item.price);
+      this.sumPrice(item);
+    },
+    sumPrice: function sumPrice(item) {
+      item.totalDishPrice += item.price;
+    },
+    minPrice: function minPrice(item) {
+      item.totalDishPrice -= item.price;
+    },
+    totalOrderPrice: function totalOrderPrice(elem) {
+      console.log(elem);
+      this.totalPrice += elem;
+    },
+    loadCategories: function loadCategories() {
+      var _this2 = this;
+
       axios.get('/api/categories').then(function (response) {
-        _this.categories = response.data.data;
-        console.log(_this.categories);
+        _this2.categories = response.data.data;
+        console.log(_this2.categories);
       });
     },
     loadRestaurants: function loadRestaurants() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get('/api/restaurants', {
         params: {
           categories_rest: this.categories_rest
         }
       }).then(function (response) {
-        _this2.restaurants = response.data.data;
-        console.log(_this2.restaurants);
+        _this3.restaurants = response.data.data;
+        console.log(_this3.restaurants);
       });
     }
   }
@@ -50044,8 +50096,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

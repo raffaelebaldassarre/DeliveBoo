@@ -33,6 +33,10 @@ const app = new Vue({
       restaurants: null,
       categories: null,
       categories_rest: [],
+      orderCart: [],
+      arrayTotalDishPrice: [],
+      totalPrice: 0,
+      dishQuantity: 1,
     },
 
     mounted() {
@@ -53,6 +57,59 @@ const app = new Vue({
     },
 
     methods:{
+
+      takeOrder(dish) {
+        $cart = document.getElementById("cart");
+       /*  console.log($cart); */
+        $cart.style.display = "flex"; 
+        this.orderCart.push(dish);
+        /* console.log(dish); */
+        /* for(let i = 0; i < this.orderCart.length; i++){
+          this.orderCart[i].quantityOrdered = this.dishQuantity;
+        } */
+        this.orderCart.forEach(elem => {
+          Vue.set(elem, "quantityOrdered", this.dishQuantity);
+          Vue.set(elem, "totalDishPrice", elem.price);
+        });
+
+        this.totalOrderPrice(dish.totalDishPrice);
+        
+        console.log(this.orderCart);
+      },
+
+      minusDish(item) {
+        if(item.quantityOrdered <= 1){
+          item.quantityOrdered = 1;
+        } else {
+          item.quantityOrdered -= 1;
+        }
+
+        this.minPrice(item);
+        this.totalOrderPrice(item.totalDishPrice);
+        console.log(item.quantityOrdered);
+      },
+
+      moreDish(item) {
+        console.log(item);
+        item.quantityOrdered += 1; 
+        
+        this.totalOrderPrice(item.price);
+        this.sumPrice(item);
+      },
+
+      sumPrice(item){
+        item.totalDishPrice += item.price;
+      },
+
+      minPrice(item){
+        item.totalDishPrice -= item.price;
+      },
+
+      totalOrderPrice(elem){
+        console.log(elem);
+        this.totalPrice += elem;
+      },
+
       loadCategories () {
         axios.get('/api/categories')
         .then((response) => {
