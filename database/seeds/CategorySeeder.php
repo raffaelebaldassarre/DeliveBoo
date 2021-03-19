@@ -2,7 +2,6 @@
 
 use App\Category;
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 
 class CategorySeeder extends Seeder
 {
@@ -11,12 +10,14 @@ class CategorySeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        for ($i=0; $i < 10; $i++) { 
-            $newCat = new Category();
-            $newCat->name = $faker->word();
-            $newCat->save();
+        $catList = config('categories');
+
+        foreach ($catList as $category) {
+            $newcategory = new Category();
+            $newcategory->name = $category['name'];
+            $newcategory->save();
         }
     }
 }

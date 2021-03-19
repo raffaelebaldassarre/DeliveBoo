@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'GuestController@welcome')->name('guests.welcome');
 Route::get('guests/restaurant/{slug}', 'GuestController@restaurant')->name('guests.restaurant');
+Route::get('cart', 'CartController@index')->name('cart.index');
 
 Auth::routes();
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('index');
     Route::resource('restaurants', 'RestaurantController');
-/*     Route::resource('restaurant/{slug}/dishes', 'DishController');
- */    Route::get('restaurants/{slug}/dishes', 'DishController@index')->name('dishes.index');
+    Route::get('restaurants/{slug}/dishes', 'DishController@index')->name('dishes.index');
     Route::get('restaurants/{slug}/dishes/create', 'DishController@create')->name('dishes.create');
     Route::post('restaurants/dishes', 'DishController@store')->name('dishes.store');
     Route::get('restaurants/{slug}/dishes/{dish}', 'DishController@show')->name('dishes.show');
