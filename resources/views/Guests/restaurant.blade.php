@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+        <div class="text-center">
+            <img class="card-img-top" src="{{asset('storage/' . $restaurant->image)}}" style=" width:400px;">
+        </div>
         <h1>I NOSTRI PIATTI</h1>
         <table class="table">
             <thead>

@@ -18,6 +18,6 @@ class GuestController extends Controller
     {
         $restaurant = Restaurant::where('slug', $request->slug)->first();
         $dishes = $restaurant->dishes;
-        return view('guests.restaurant', compact('dishes'));
+        return view('guests.restaurant', compact('dishes', 'restaurant'));
     }
 }
