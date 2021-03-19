@@ -15,6 +15,7 @@
                     <th>Disponibilità</th>
                     <th>Allergeni</th>
                     <th>Cover</th>
+                    <th>Ordina</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,9 +41,23 @@
 
                     <td>{{ $dish->allergens }}</td>
                     <td><img src="{{asset('storage/' . $dish->cover)}}" alt="" style="height: 150px"></td>
+                    <td><button type="button" class="btn btn-primary" @click="takeOrder({{$dish}})">Ordina</button></td>
                 </tr>
 
                 @endforeach
             </tbody>
         </table>
+
+        <div id="cart" style="display: none">
+            <ul>
+                <li class="d-flex" v-for="(item, index) in orderCart">
+                    <button id="minus" @click="minusDish(item)">-</button>
+                    @{{item.name}}
+                    <button id="plus" @click="moreDish(item)">+</button>
+                    @{{item.quantityOrdered}}
+                    <h4>@{{item.totalDishPrice}}</h4>
+                </li>
+            </ul>
+            <h3>@{{totalPrice}}</h3>
+        </div>
 @endsection
