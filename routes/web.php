@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'GuestController@welcome')->name('guests.welcome');
-Route::get('guests/restaurant/{slug}', 'GuestController@restaurant')->name('guests.restaurant');
+Route::get('/restaurant/{slug}', 'GuestController@restaurant')->name('guests.restaurant');
 Route::get('cart', 'CartController@index')->name('cart.index');
 
 Auth::routes();

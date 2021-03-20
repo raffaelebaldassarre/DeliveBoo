@@ -49873,9 +49873,7 @@ var app = new Vue({
     categories: null,
     categories_rest: [],
     orderCart: [],
-    arrayTotalDishPrice: [],
-    totalPrice: 0,
-    dishQuantity: 1
+    totalPrice: ''
   },
   mounted: function mounted() {
     this.loadCategories();
@@ -49886,8 +49884,7 @@ var app = new Vue({
       handler: function handler() {
         this.loadCategories();
         this.loadRestaurants();
-      },
-      deep: true
+      }
     }
   },
   methods: {
@@ -49895,68 +49892,79 @@ var app = new Vue({
       var _this = this;
 
       $cart = document.getElementById("cart");
-      /*  console.log($cart); */
-
       $cart.style.display = "flex";
-      this.orderCart.push(dish);
-      /* console.log(dish); */
 
-      /* for(let i = 0; i < this.orderCart.length; i++){
-        this.orderCart[i].quantityOrdered = this.dishQuantity;
-      } */
+      if (this.orderCart.some(function (obj) {
+        return obj.id === dish.id;
+      })) {
+        this.orderCart.forEach(function (elem) {
+          if (elem.id === dish.id) {
+            _this.moreDish(elem);
 
-      this.orderCart.forEach(function (elem) {
-        Vue.set(elem, "quantityOrdered", _this.dishQuantity);
-        Vue.set(elem, "totalDishPrice", elem.price);
-      });
-      this.totalOrderPrice(dish.totalDishPrice);
-      console.log(this.orderCart);
+            _this.priceTotal();
+          }
+        });
+      } else {
+        this.orderCart.push(dish);
+        Vue.set(this.orderCart[this.orderCart.length - 1], 'quantity', 0);
+        this.moreDish(dish);
+        this.priceTotal();
+      }
     },
     minusDish: function minusDish(item) {
-      if (item.quantityOrdered <= 1) {
-        item.quantityOrdered = 1;
+      if (item.quantity <= 1) {
+        item.quantity = 1;
       } else {
-        item.quantityOrdered -= 1;
+        item.quantity -= 1;
+        item.totalDishPrice -= item.price;
       }
 
-      this.minPrice(item);
-      this.totalOrderPrice(item.totalDishPrice);
-      console.log(item.quantityOrdered);
+      this.priceTotal();
+      this.totalDishPrice();
     },
     moreDish: function moreDish(item) {
-      console.log(item);
-      item.quantityOrdered += 1;
-      this.totalOrderPrice(item.price);
-      this.sumPrice(item);
-    },
-    sumPrice: function sumPrice(item) {
+      item.quantity += 1;
       item.totalDishPrice += item.price;
+      this.priceTotal();
+      this.totalDishPrice();
     },
-    minPrice: function minPrice(item) {
-      item.totalDishPrice -= item.price;
+    totalDishPrice: function totalDishPrice() {
+      Vue.set(this.orderCart[this.orderCart.length - 1], 'totalDishPrice', 0);
+      this.orderCart[this.orderCart.length - 1].totalDishPrice += this.orderCart[this.orderCart.length - 1].price * this.orderCart[this.orderCart.length - 1].quantity;
     },
-    totalOrderPrice: function totalOrderPrice(elem) {
-      console.log(elem);
-      this.totalPrice += elem;
+    deleteDish: function deleteDish(index) {
+      for (var i = 0; i < this.orderCart.length; i++) {
+        if (i == index) {
+          this.orderCart.splice(index, 1);
+        }
+
+        this.priceTotal();
+      }
     },
-    loadCategories: function loadCategories() {
+    priceTotal: function priceTotal() {
       var _this2 = this;
 
+      this.totalPrice = 0;
+      this.orderCart.forEach(function (elem) {
+        _this2.totalPrice += elem.price * elem.quantity;
+      });
+    },
+    loadCategories: function loadCategories() {
+      var _this3 = this;
+
       axios.get('/api/categories').then(function (response) {
-        _this2.categories = response.data.data;
-        console.log(_this2.categories);
+        _this3.categories = response.data.data;
       });
     },
     loadRestaurants: function loadRestaurants() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/api/restaurants', {
         params: {
           categories_rest: this.categories_rest
         }
       }).then(function (response) {
-        _this3.restaurants = response.data.data;
-        console.log(_this3.restaurants);
+        _this4.restaurants = response.data.data;
       });
     }
   }
@@ -50096,8 +50104,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

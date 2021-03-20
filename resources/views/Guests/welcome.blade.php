@@ -19,7 +19,7 @@
             <h3>La tua ricerca ha trovato: @{{restaurants.length}} ristoranti</h3>
             <div class="row mt-4">
                 <div class="col-lg-4 col-md-6 mb-4" v-for="restaurant in restaurants">
-                    <a :href="'/guests/restaurant/' + restaurant.slug">
+                    <a :href="'restaurant/' + restaurant.slug">
                         <div class="card h-100">
                                 <img class="card-img-top" :src="`storage/${restaurant.image}`" alt="">
                             <div class="card-body">

@@ -26,13 +26,6 @@
                     <td>{{ $dish->ingredients }}</td>
                     <td>{{ $dish->price }} €</td>
 
-                    {{-- <td>
-                        @if($dish->available == 1)
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                        @else
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                        @endif
-                    </td> --}}
                     @if ($dish->available == 1)
                         <td>Disponibile</td>
                     @else
@@ -43,21 +36,34 @@
                     <td><img src="{{asset('storage/' . $dish->cover)}}" alt="" style="height: 150px"></td>
                     <td><button type="button" class="btn btn-primary" @click="takeOrder({{$dish}})">Ordina</button></td>
                 </tr>
-
                 @endforeach
             </tbody>
         </table>
 
         <div id="cart" style="display: none">
-            <ul>
-                <li class="d-flex" v-for="(item, index) in orderCart">
-                    <button id="minus" @click="minusDish(item)">-</button>
-                    @{{item.name}}
-                    <button id="plus" @click="moreDish(item)">+</button>
-                    @{{item.quantityOrdered}}
-                    <h4>@{{item.totalDishPrice}}</h4>
-                </li>
-            </ul>
-            <h3>@{{totalPrice}}</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>                    
+                            Piatto
+                        </th>
+                        <th>Quantità</th>
+                        <th>Prezzo totale per piatto</th>
+                    </tr>
+                </thead>
+                <tbody v-for="(item, index) in orderCart">
+                    <tr>
+                        <td scope="row">@{{item.name}}</td>
+                        <td>@{{item.quantity}}</td>
+                        <td>@{{item.totalDishPrice}} €</td>
+                        <td>                            
+                            <button id="minus" @click="minusDish(item)">-</button>
+                            <button id="plus" @click="moreDish(item)">+</button>
+                            <button id="trash" @click="deleteDish(index)" class="btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+        <h3>Prezzo Totale: @{{totalPrice}} €</h3>
 @endsection

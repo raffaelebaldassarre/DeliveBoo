@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -34,9 +35,7 @@ const app = new Vue({
       categories: null,
       categories_rest: [],
       orderCart: [],
-      arrayTotalDishPrice: [],
-      totalPrice: 0,
-      dishQuantity: 1,
+      totalPrice: '',
     },
 
     mounted() {
@@ -52,69 +51,72 @@ const app = new Vue({
           this.loadCategories();
           this.loadRestaurants();
         },
-        deep: true
       }
     },
 
     methods:{
-
       takeOrder(dish) {
         $cart = document.getElementById("cart");
-       /*  console.log($cart); */
-        $cart.style.display = "flex"; 
-        this.orderCart.push(dish);
-        /* console.log(dish); */
-        /* for(let i = 0; i < this.orderCart.length; i++){
-          this.orderCart[i].quantityOrdered = this.dishQuantity;
-        } */
-        this.orderCart.forEach(elem => {
-          Vue.set(elem, "quantityOrdered", this.dishQuantity);
-          Vue.set(elem, "totalDishPrice", elem.price);
-        });
+        $cart.style.display = "flex";
 
-        this.totalOrderPrice(dish.totalDishPrice);
-        
-        console.log(this.orderCart);
+        if(this.orderCart.some(obj => obj.id === dish.id)){
+          this.orderCart.forEach(elem=> {
+            if(elem.id === dish.id){
+              this.moreDish(elem);
+              this.priceTotal();
+            }
+          })
+        }else{
+          this.orderCart.push(dish);
+          Vue.set(this.orderCart[this.orderCart.length - 1], 'quantity', 0);
+          this.moreDish(dish);
+          this.priceTotal();
+        }
       },
 
       minusDish(item) {
-        if(item.quantityOrdered <= 1){
-          item.quantityOrdered = 1;
-        } else {
-          item.quantityOrdered -= 1;
+        if (item.quantity <= 1) {
+          item.quantity = 1
+        }else{
+          item.quantity -= 1;
+          item.totalDishPrice -= item.price;
         }
-
-        this.minPrice(item);
-        this.totalOrderPrice(item.totalDishPrice);
-        console.log(item.quantityOrdered);
+        this.priceTotal();
+        this.totalDishPrice();
       },
 
       moreDish(item) {
-        console.log(item);
-        item.quantityOrdered += 1; 
-        
-        this.totalOrderPrice(item.price);
-        this.sumPrice(item);
-      },
-
-      sumPrice(item){
+        item.quantity += 1;
         item.totalDishPrice += item.price;
+        this.priceTotal();
+        this.totalDishPrice();
       },
 
-      minPrice(item){
-        item.totalDishPrice -= item.price;
+      totalDishPrice() {
+        Vue.set(this.orderCart[this.orderCart.length - 1], 'totalDishPrice', 0);
+        this.orderCart[this.orderCart.length - 1].totalDishPrice += this.orderCart[this.orderCart.length - 1].price * this.orderCart[this.orderCart.length - 1].quantity;
       },
 
-      totalOrderPrice(elem){
-        console.log(elem);
-        this.totalPrice += elem;
+      deleteDish(index){
+        for (let i = 0; i < this.orderCart.length; i++) {
+          if (i == index) {
+            this.orderCart.splice(index,1);
+          }
+          this.priceTotal();
+        }
+      },
+
+      priceTotal(){
+        this.totalPrice = 0;
+          this.orderCart.forEach((elem) => {
+            this.totalPrice += elem.price * elem.quantity;
+          });
       },
 
       loadCategories () {
         axios.get('/api/categories')
         .then((response) => {
           this.categories = response.data.data;
-          console.log(this.categories);
         })
       },
 
@@ -123,7 +125,6 @@ const app = new Vue({
           { params: { categories_rest: this.categories_rest} })
           .then((response) => {
           this.restaurants = response.data.data;
-          console.log(this.restaurants);
         })
       }
     },
