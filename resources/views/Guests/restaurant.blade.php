@@ -40,7 +40,7 @@
             </tbody>
         </table>
 
-        <div id="cart" style="display: none">
+        <div v-if="totalPrice != 0">
             <table class="table">
                 <thead>
                     <tr>
@@ -64,6 +64,7 @@
                     </tr>
                 </tbody>
             </table>
+            <h3>Prezzo Totale: @{{totalPrice}} €</h3>
+            <button type="button" class="btn btn-danger">Chekout</button>
         </div>
-        <h3>Prezzo Totale: @{{totalPrice}} €</h3>
 @endsection

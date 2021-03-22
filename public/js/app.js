@@ -49891,9 +49891,6 @@ var app = new Vue({
     takeOrder: function takeOrder(dish) {
       var _this = this;
 
-      $cart = document.getElementById("cart");
-      $cart.style.display = "flex";
-
       if (this.orderCart.some(function (obj) {
         return obj.id === dish.id;
       })) {
@@ -49910,6 +49907,9 @@ var app = new Vue({
         this.moreDish(dish);
         this.priceTotal();
       }
+
+      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('testTotalPrice', this.totalPrice);
     },
     minusDish: function minusDish(item) {
       if (item.quantity <= 1) {
@@ -49921,12 +49921,16 @@ var app = new Vue({
 
       this.priceTotal();
       this.totalDishPrice();
+      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('testTotalPrice', this.totalPrice);
     },
     moreDish: function moreDish(item) {
       item.quantity += 1;
       item.totalDishPrice += item.price;
       this.priceTotal();
       this.totalDishPrice();
+      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('testTotalPrice', this.totalPrice);
     },
     totalDishPrice: function totalDishPrice() {
       Vue.set(this.orderCart[this.orderCart.length - 1], 'totalDishPrice', 0);
@@ -49940,6 +49944,9 @@ var app = new Vue({
 
         this.priceTotal();
       }
+
+      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('testTotalPrice', this.totalPrice);
     },
     priceTotal: function priceTotal() {
       var _this2 = this;

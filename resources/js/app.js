@@ -56,9 +56,6 @@ const app = new Vue({
 
     methods:{
       takeOrder(dish) {
-        $cart = document.getElementById("cart");
-        $cart.style.display = "flex";
-
         if(this.orderCart.some(obj => obj.id === dish.id)){
           this.orderCart.forEach(elem=> {
             if(elem.id === dish.id){
@@ -71,7 +68,10 @@ const app = new Vue({
           Vue.set(this.orderCart[this.orderCart.length - 1], 'quantity', 0);
           this.moreDish(dish);
           this.priceTotal();
+          
         }
+        window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+        window.localStorage.setItem('testTotalPrice', this.totalPrice);
       },
 
       minusDish(item) {
@@ -83,6 +83,8 @@ const app = new Vue({
         }
         this.priceTotal();
         this.totalDishPrice();
+        window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+        window.localStorage.setItem('testTotalPrice', this.totalPrice);
       },
 
       moreDish(item) {
@@ -90,6 +92,8 @@ const app = new Vue({
         item.totalDishPrice += item.price;
         this.priceTotal();
         this.totalDishPrice();
+        window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+        window.localStorage.setItem('testTotalPrice', this.totalPrice);
       },
 
       totalDishPrice() {
@@ -104,6 +108,8 @@ const app = new Vue({
           }
           this.priceTotal();
         }
+        window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
+        window.localStorage.setItem('testTotalPrice', this.totalPrice);
       },
 
       priceTotal(){
