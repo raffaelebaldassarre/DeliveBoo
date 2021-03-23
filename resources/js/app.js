@@ -70,8 +70,7 @@ const app = new Vue({
           this.priceTotal();
           
         }
-        window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-        window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+        this.localStorage();
       },
 
       minusDish(item) {
@@ -83,8 +82,7 @@ const app = new Vue({
         }
         this.priceTotal();
         this.totalDishPrice();
-        window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-        window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+        this.localStorage();
       },
 
       moreDish(item) {
@@ -92,8 +90,7 @@ const app = new Vue({
         item.totalDishPrice += item.price;
         this.priceTotal();
         this.totalDishPrice();
-        window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-        window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+        this.localStorage();
       },
 
       totalDishPrice() {
@@ -108,8 +105,8 @@ const app = new Vue({
           }
           this.priceTotal();
         }
-        window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-        window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+        this.localStorage();
+        
       },
 
       priceTotal(){
@@ -132,7 +129,10 @@ const app = new Vue({
           .then((response) => {
           this.restaurants = response.data.data;
         })
+      },
+      localStorage(){
+        window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
+        window.localStorage.setItem('cartTotalPrice', this.totalPrice);
       }
-    },
-    
+    }
 });
