@@ -65,6 +65,7 @@
                 </tbody>
             </table>
             <h3>Prezzo Totale: @{{totalPrice}} €</h3>
-            <button type="button" class="btn btn-danger">Chekout</button>
+            <a href="{{route ('cart.index') }}"><button type="button" class="btn btn-danger">Checkout</button></a>
+            
         </div>
 @endsection

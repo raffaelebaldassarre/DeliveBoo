@@ -49869,8 +49869,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    restaurants: null,
-    categories: null,
+    restaurants: '',
+    categories: '',
     categories_rest: [],
     orderCart: [],
     totalPrice: ''
@@ -49878,6 +49878,8 @@ var app = new Vue({
   mounted: function mounted() {
     this.loadCategories();
     this.loadRestaurants();
+    this.orderCart = JSON.parse(localStorage.getItem('Cart') || []);
+    this.totalPrice = localStorage.getItem('cartTotalPrice' || false);
   },
   watch: {
     categories_rest: {
@@ -49908,8 +49910,8 @@ var app = new Vue({
         this.priceTotal();
       }
 
-      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('testTotalPrice', this.totalPrice);
+      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
     },
     minusDish: function minusDish(item) {
       if (item.quantity <= 1) {
@@ -49921,16 +49923,16 @@ var app = new Vue({
 
       this.priceTotal();
       this.totalDishPrice();
-      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('testTotalPrice', this.totalPrice);
+      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
     },
     moreDish: function moreDish(item) {
       item.quantity += 1;
       item.totalDishPrice += item.price;
       this.priceTotal();
       this.totalDishPrice();
-      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('testTotalPrice', this.totalPrice);
+      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
     },
     totalDishPrice: function totalDishPrice() {
       Vue.set(this.orderCart[this.orderCart.length - 1], 'totalDishPrice', 0);
@@ -49945,8 +49947,8 @@ var app = new Vue({
         this.priceTotal();
       }
 
-      window.localStorage.setItem('testCart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('testTotalPrice', this.totalPrice);
+      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
     },
     priceTotal: function priceTotal() {
       var _this2 = this;
