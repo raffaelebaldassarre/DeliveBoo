@@ -49910,8 +49910,7 @@ var app = new Vue({
         this.priceTotal();
       }
 
-      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+      this.localStorage();
     },
     minusDish: function minusDish(item) {
       if (item.quantity <= 1) {
@@ -49923,16 +49922,14 @@ var app = new Vue({
 
       this.priceTotal();
       this.totalDishPrice();
-      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+      this.localStorage();
     },
     moreDish: function moreDish(item) {
       item.quantity += 1;
       item.totalDishPrice += item.price;
       this.priceTotal();
       this.totalDishPrice();
-      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+      this.localStorage();
     },
     totalDishPrice: function totalDishPrice() {
       Vue.set(this.orderCart[this.orderCart.length - 1], 'totalDishPrice', 0);
@@ -49947,8 +49944,7 @@ var app = new Vue({
         this.priceTotal();
       }
 
-      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
-      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+      this.localStorage();
     },
     priceTotal: function priceTotal() {
       var _this2 = this;
@@ -49975,6 +49971,10 @@ var app = new Vue({
       }).then(function (response) {
         _this4.restaurants = response.data.data;
       });
+    },
+    localStorage: function localStorage() {
+      window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
+      window.localStorage.setItem('cartTotalPrice', this.totalPrice);
     }
   }
 });
