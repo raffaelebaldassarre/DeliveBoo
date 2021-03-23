@@ -5,6 +5,7 @@
             <img class="card-img-top" src="{{asset('storage/' . $restaurant->image)}}" style=" width:400px;">
         </div>
         <h1>I NOSTRI PIATTI</h1>
+        <h3 id="rest_id" class="d-none">{{ $restaurant->id }}</h3>
         <table class="table">
             <thead>
                 <tr>

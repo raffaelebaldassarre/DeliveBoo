@@ -41,7 +41,7 @@ const app = new Vue({
     mounted() {
       this.loadCategories();
       this.loadRestaurants();
-      this.orderCart = JSON.parse(localStorage.getItem('Cart') || []);
+      this.orderCart = JSON.parse(localStorage.getItem('Cart') || '[]');
       this.totalPrice = localStorage.getItem ('cartTotalPrice' || '');
     },
 
@@ -130,9 +130,22 @@ const app = new Vue({
           this.restaurants = response.data.data;
         })
       },
+
+      setCookie(name,value,days){
+        let expires = "";
+        if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+     },
+     
       localStorage(){
         window.localStorage.setItem('Cart', JSON.stringify(this.orderCart));
         window.localStorage.setItem('cartTotalPrice', this.totalPrice);
+        let myItem = localStorage.getItem('Cart');
+        this.setCookie('cookieCart', myItem, 7)
       }
     }
 });

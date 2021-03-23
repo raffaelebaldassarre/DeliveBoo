@@ -10,4 +10,8 @@ class CartController extends Controller
     {
         return view('cart.index');
     }
+
+    public function getCookie(Request $request){
+        $value = json_decode($_COOKIE["cookieCart"]);
+     }
 }
