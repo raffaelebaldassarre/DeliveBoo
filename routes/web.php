@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'GuestController@welcome')->name('guests.welcome');
 Route::get('/restaurant/{slug}', 'GuestController@restaurant')->name('guests.restaurant');
-Route::get('/cart', 'CartController@index')->name('cart.index');
-// Route::get('cart', 'CartController@getCookie')->name('cart.index');
+Route::get('{slug}/cart', 'CartController@index')->name('cart.index');
+Route::post('cart/store', 'CartController@store')->name('cart.store');
 
 Auth::routes();
 

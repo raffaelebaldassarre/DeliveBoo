@@ -36,13 +36,20 @@ const app = new Vue({
       categories_rest: [],
       orderCart: [],
       totalPrice: '',
+      restaurantNow: 0,
+      contenitore: 0,
+      restaurantId: '',
     },
 
     mounted() {
       this.loadCategories();
       this.loadRestaurants();
+
       this.orderCart = JSON.parse(localStorage.getItem('Cart') || '[]');
       this.totalPrice = localStorage.getItem ('cartTotalPrice' || '');
+      console.log(this.totalPrice);
+
+      this.matchRestaurant();
     },
 
     watch: {
@@ -55,6 +62,20 @@ const app = new Vue({
     },
 
     methods:{
+
+      matchRestaurant() {
+        this.restaurantId = parseInt(document.getElementById('rest_id').textContent)
+        console.log(this.restaurantId);
+        this.restaurantNow = this.orderCart[0].restaurant_id;
+        console.log(this.restaurantNow);
+  
+        if(this.restaurantNow != this.restaurantId){
+          this.orderCart = [];
+          this.totalPrice = 0;
+          window.localStorage.clear();
+        }
+      },
+
       takeOrder(dish) {
         if(this.orderCart.some(obj => obj.id === dish.id)){
           this.orderCart.forEach(elem=> {
