@@ -2,6 +2,7 @@
 
 @section('content')
     <table class="table">
+        <h3 id="rest_id" class="d-none">{{ $restaurant->id }}</h3>
         <thead>
             <tr>
                 <th>                    
@@ -28,7 +29,7 @@
 
     <div class="col-lg-6 p-0">
         <h3 class="py-3">Inserisci i tuoi dati per la consegna</h3>
-        <form action="#" method="post">
+        <form action="{{route('cart.store')}}" method="post">
     
             @csrf
     

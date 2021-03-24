@@ -5,7 +5,7 @@
             <img class="card-img-top" src="{{asset('storage/' . $restaurant->image)}}" style=" width:400px;">
         </div>
         <h1>I NOSTRI PIATTI</h1>
-        <h3 id="rest_id" class="d-none">{{ $restaurant->id }}</h3>
+        <h3 id="rest_id" >{{ $restaurant->id }}</h3>
         <table class="table">
             <thead>
                 <tr>
@@ -66,7 +66,7 @@
                 </tbody>
             </table>
             <h3>Prezzo Totale: @{{totalPrice}} €</h3>
-            <a href="{{route ('cart.index') }}"><button type="button" class="btn btn-danger">Checkout</button></a>
+            <a href="{{route ('cart.index', ['slug' => $restaurant->slug]) }}"><button type="button" class="btn btn-danger">Checkout</button></a>
             
         </div>
 @endsection

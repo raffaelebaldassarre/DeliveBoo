@@ -49873,13 +49873,18 @@ var app = new Vue({
     categories: '',
     categories_rest: [],
     orderCart: [],
-    totalPrice: ''
+    totalPrice: '',
+    restaurantNow: 0,
+    contenitore: 0,
+    restaurantId: ''
   },
   mounted: function mounted() {
     this.loadCategories();
     this.loadRestaurants();
     this.orderCart = JSON.parse(localStorage.getItem('Cart') || '[]');
     this.totalPrice = localStorage.getItem('cartTotalPrice' || false);
+    console.log(this.totalPrice);
+    this.matchRestaurant();
   },
   watch: {
     categories_rest: {
@@ -49890,6 +49895,18 @@ var app = new Vue({
     }
   },
   methods: {
+    matchRestaurant: function matchRestaurant() {
+      this.restaurantId = parseInt(document.getElementById('rest_id').textContent);
+      console.log(this.restaurantId);
+      this.restaurantNow = this.orderCart[0].restaurant_id;
+      console.log(this.restaurantNow);
+
+      if (this.restaurantNow != this.restaurantId) {
+        this.orderCart = [];
+        this.totalPrice = 0;
+        window.localStorage.clear();
+      }
+    },
     takeOrder: function takeOrder(dish) {
       var _this = this;
 
@@ -50136,8 +50153,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Boolean23\8_PROGETTO FINALE\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Boolean23\8_PROGETTO FINALE\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
