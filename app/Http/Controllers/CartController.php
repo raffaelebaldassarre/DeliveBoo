@@ -15,21 +15,16 @@ class CartController extends Controller
     }
 
     public function store(Request $request, Faker $faker){
-        /* dd($request); */
         $dishesList = [];
         $quantityList = [];
         $cookieCart = json_decode($_COOKIE["cookieCart"]);
-        /* dd($cookieCart); */
         $restaurant_id = $cookieCart[0]->restaurant_id;
-        /* dd($restaurant_id); */
         $request["restaurant_id"] = $restaurant_id;
         $request["exp_date"] = $faker->dateTimeInInterval($startDate = 'now', $endDate = '+ 1 hour');
-        /* dd($request->all()); */
         foreach ($cookieCart as $cook) {
             array_push ($dishesList , $cook->id);
             array_push ($quantityList , $cook->quantity);
         }
-        /* dd($quantityList); */
 
         
         $validateData = $request->validate([
@@ -45,8 +40,6 @@ class CartController extends Controller
             'quantity' => '',
         ]);
         
-        /* dd($validateData); */
-
         Order::create($validateData);
 
         $new_order = Order::orderBy("id", "desc")->first();
