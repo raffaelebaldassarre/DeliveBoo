@@ -51,9 +51,15 @@ class CartController extends Controller
 
         $new_order = Order::orderBy("id", "desc")->first();
 
-        $new_order->dishes()->attach($dishesList, $quantityList);
-        /* $new_order->dishes()->sync(); */
-        
-        
-     }
+        foreach ($cookieCart as $cook) {
+            $new_order->dishes()->attach([$cook->id => ['quantity' => $cook->quantity]]);  
+        }
+
+        return redirect()->route('guests.success');
+    }
+
+    public function success()
+    {
+        return view('guests.success');
+    }
 }
