@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+
+  protected $fillable = ["special_requests", "name", "lastname", "address", "phone_number", "payment_id", "restaurant_id", "exp_date" ];
   public function restaurant()
   {
       return $this->belongsTo(Restaurant::class);
@@ -13,6 +15,6 @@ class Order extends Model
 
   public function dishes()
   {
-    return $this->belongsToMany(Dish::class);
+    return $this->belongsToMany(Dish::class)->withPivot(['quantity']);
   }
 }

@@ -71,10 +71,10 @@
     
             {{-- RICHIESTE SPECIALI --}}
             <div class="form-group">
-                <label for="special_request">RICHIESTE SPECIALI</label>
-                <input class="form-control" type="text" name="special_request" id="special_request" value="{{old('special_request')}}">
+                <label for="special_requests">RICHIESTE SPECIALI</label>
+                <input class="form-control" type="text" name="special_requests" id="special_requests" value="{{old('special_requests')}}">
             </div>
-            @error('special_request')
+            @error('special_requests')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             
