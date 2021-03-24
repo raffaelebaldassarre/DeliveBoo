@@ -17,6 +17,7 @@ Route::get('/', 'GuestController@welcome')->name('guests.welcome');
 Route::get('/restaurant/{slug}', 'GuestController@restaurant')->name('guests.restaurant');
 Route::get('{slug}/cart', 'CartController@index')->name('cart.index');
 Route::post('cart/store', 'CartController@store')->name('cart.store');
+Route::get('success', 'CartController@success')->name('guests.success');
 
 Auth::routes();
 
