@@ -82,3 +82,37 @@
         </form>
     </div>
 @endsection
+
+@section('payment')
+
+<div id="dropin-wrapper">
+    <div id="checkout-message"></div>
+    <div style="width:60%; margin:auto;">
+      <div id="dropin-container"></div>
+    </div>
+    <button style="background-color:yellow" id="submit-button">Submit payment</button>
+  </div>
+
+
+ <script>
+   var button = document.querySelector('#submit-button');
+
+   braintree.dropin.create({
+     authorization: "sandbox_zjph3bx7_x2h6cngzkjxbdss9",
+     container: '#dropin-container'
+   }, function (createErr, instance) {
+     button.addEventListener('click', function () {
+       instance.requestPaymentMethod(function (err, payload) {
+         $.get('{{ route("payment.process") }}', {payload}, function (response) {
+           if (response.success) {
+             alert('Payment successfull!');
+           } else {
+             alert('Payment failed');
+           }
+         }, 'json');
+       });
+     });
+   });
+ </script>
+    
+@endsection
