@@ -26,7 +26,11 @@
         </tbody>
     </table>
     <h3 v-if="totalPrice != 0">Prezzo Totale: @{{totalPrice}} €</h3>
+@endsection
 
+@section('payment')
+
+<div class="container">
     <div class="col-lg-6 p-0">
         <h3 class="py-3">Inserisci i tuoi dati per la consegna</h3>
         <form action="{{route('cart.store')}}" method="post">
@@ -77,42 +81,42 @@
             @error('special_requests')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+
+            <div id="dropin-wrapper">
+                <div id="checkout-message"></div>
+                <div style="width:60%; margin:auto;">
+                  <div id="dropin-container"></div>
+                </div>
+                <button type="submit" style="background-color:yellow" id="submit-button">Submit payment</button>
+              </div>
             
-            <button type="submit" class="btn btn-outline-success btn-lg">Submit</button>
+            
+             <script>
+               
+               var button = document.querySelector('#submit-button');
+            
+               braintree.dropin.create({
+                 authorization: "sandbox_zjph3bx7_x2h6cngzkjxbdss9",
+                 container: '#dropin-container'
+               }, function (createErr, instance) {
+                 button.addEventListener('click', function () {
+                   instance.requestPaymentMethod(function (err, payload) {
+                     $.get('{{ route("payment.process") }}', {payload}, function (response) {
+                       if (response.success) {
+                         localStorage.clear();
+                         alert('Payment successfull!');
+                       } else {
+                         alert('Payment failed');
+                       }
+                     }, 'json');
+                   });
+                 });
+               });
+             </script>
+            
+            {{-- <button type="submit" class="btn btn-outline-success btn-lg">Submit</button> --}}
         </form>
     </div>
-@endsection
-
-@section('payment')
-
-<div id="dropin-wrapper">
-    <div id="checkout-message"></div>
-    <div style="width:60%; margin:auto;">
-      <div id="dropin-container"></div>
-    </div>
-    <button style="background-color:yellow" id="submit-button">Submit payment</button>
-  </div>
-
-
- <script>
-   var button = document.querySelector('#submit-button');
-
-   braintree.dropin.create({
-     authorization: "sandbox_zjph3bx7_x2h6cngzkjxbdss9",
-     container: '#dropin-container'
-   }, function (createErr, instance) {
-     button.addEventListener('click', function () {
-       instance.requestPaymentMethod(function (err, payload) {
-         $.get('{{ route("payment.process") }}', {payload}, function (response) {
-           if (response.success) {
-             alert('Payment successfull!');
-           } else {
-             alert('Payment failed');
-           }
-         }, 'json');
-       });
-     });
-   });
- </script>
+</div>
     
 @endsection
