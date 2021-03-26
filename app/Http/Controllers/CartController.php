@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Restaurant;
 use App\Order;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Email;
 use Illuminate\Http\Request;
 use Faker\Generator as Faker;
 
@@ -48,7 +50,11 @@ class CartController extends Controller
             $new_order->dishes()->attach([$cook->id => ['quantity' => $cook->quantity]]);  
         }
 
-        return redirect()->route('guests.success');
+
+        $to = $new_order->name . $new_order->lastname . '@example.it';
+        Mail::to($to)->send(new Email);
+
+        return redirect()->route('guests.success', compact('new_order'));
     }
 
     public function success()
