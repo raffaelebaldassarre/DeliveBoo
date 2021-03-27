@@ -41,7 +41,7 @@
             </tbody>
         </table>
 
-        <div v-if="totalPrice != 0">
+        <div v-if="totalPrice != 0 && totalPrice != null">
             <table class="table">
                 <thead>
                     <tr>
