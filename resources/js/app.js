@@ -170,3 +170,15 @@ const app = new Vue({
       }
     }
 });
+
+/* $(function () {
+
+  $(window).scroll(function () {
+  if ($(window).scrollTop() >= 650) {
+    $("#filippo").css('background','#221F20');
+  } else {
+    $("#filippo").css('background','blue');
+  }
+});
+
+}); */
