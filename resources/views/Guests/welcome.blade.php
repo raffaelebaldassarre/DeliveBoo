@@ -8,12 +8,32 @@
     <div class="row">
         <div class="col-lg-12 mb-4">
             <h3 class="mt-2">Scegli tra le categorie</h3>
-            <div class="form-check d-inline-flex" v-for="(category, index) in categories">
-                <input class="form-check-input" type="checkbox" :value="category.id" :id="'category'+index" v-model="categories_rest">
-                <label class="form-check-label" :for="'category' + index">
-                    @{{ category.name }}
-                </label>
+            
+            <!-- Top content -->
+            <div class="top-content">
+                <div class="container-fluid">
+                    <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" :class="index==0 ? 'active' : '' " v-for="(category, index) in categories">
+                                <input class="form-check-input d-none" type="checkbox" :value="category.id" :id="'category'+index" v-model="categories_rest">
+                                <label class="form-check-label" :for="'category' + index">
+                                    <img src="//placehold.it/600x400/000/fff?text=1" class="img-fluid mx-auto d-block" alt="img1">
+                                    @{{ category.name }}
+                                </label>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
+
         </div>
         <div class="col-lg-12">
             <h3>La tua ricerca ha trovato: @{{restaurants.length}} ristoranti</h3>
