@@ -6,12 +6,14 @@
     color: #FC904A;
     text-shadow: 2px 2px rgb(20, 19, 19);
     padding: 8% 10%;
+    text-align: center;
 
     h1{
       font-size: 550%;
       position: absolute;
       top: 10%;
       left:35%;
+      opacity: 1;
       animation-name: position;
       animation-duration: 1.5s;
       animation-iteration-count: 1;
@@ -24,8 +26,9 @@
       position: absolute;
       top: 25%;
       left:35%;
+      opacity: 1;
       animation-name: position;
-      animation-duration: 1.5s;
+      animation-duration: 3.5s;
       animation-iteration-count: 1;
       animation-timing-function: ease-in-out;
     }
@@ -34,13 +37,15 @@
       position: absolute;
       top: 50%;
       left:35%;
+      opacity: 1;
       animation-name: position;
-      animation-duration: 1.5s;
+      animation-duration: 4.5s;
       animation-iteration-count: 1;
       animation-timing-function: ease-in-out;
     }
     @keyframes position {
-      from {left: 100%}
-      to {left:35%}
+      from {left: 100%; opacity: 0;}
+      to {left:35%; opacity: 1;}
+
     }
 }
