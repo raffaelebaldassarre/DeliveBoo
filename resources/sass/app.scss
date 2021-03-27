@@ -6,3 +6,20 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@font-face {
+    font-family: "MAGALLY";
+    src: url("/fonts/sumac_rocky.otf");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    font-family: "MAGALLY";
+}
+
+//navbar
+@import 'partials/navbar.scss';
+
+//header
+@import 'partials/header.scss';
