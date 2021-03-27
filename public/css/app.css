@@ -10992,15 +10992,68 @@ nav .white {
 
 .deliveboo h1 {
   font-size: 550%;
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  -webkit-animation-name: position;
+          animation-name: position;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
 }
 
 .deliveboo h4 {
   font-size: 350%;
   padding: 2% 0 2% 0;
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  -webkit-animation-name: position;
+          animation-name: position;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
 }
 
 .deliveboo p {
   font-size: 200%;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  -webkit-animation-name: position;
+          animation-name: position;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes position {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 35%;
+  }
+}
+
+@keyframes position {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: 35%;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

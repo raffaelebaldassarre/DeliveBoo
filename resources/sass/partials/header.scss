@@ -9,12 +9,38 @@
 
     h1{
       font-size: 550%;
+      position: absolute;
+      top: 10%;
+      left:35%;
+      animation-name: position;
+      animation-duration: 1.5s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
     }
+
     h4{
       font-size: 350%;
       padding: 2% 0 2% 0;
+      position: absolute;
+      top: 25%;
+      left:35%;
+      animation-name: position;
+      animation-duration: 1.5s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
     }
     p{
       font-size: 200%;
+      position: absolute;
+      top: 50%;
+      left:35%;
+      animation-name: position;
+      animation-duration: 1.5s;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in-out;
     }
-  }
+    @keyframes position {
+      from {left: 100%}
+      to {left:35%}
+    }
+}
