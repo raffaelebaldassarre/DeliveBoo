@@ -11222,3 +11222,60 @@ label img {
   z-index: -1;
 }
 
+.relative {
+  position: relative;
+  transition: 2s;
+}
+
+.relative:hover img {
+  filter: grayscale(0.6);
+}
+
+.none {
+  text-shadow: 2px 2px black;
+}
+
+.none p {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FC904A;
+}
+
+.relative:hover p {
+  display: block;
+}
+
+.end-page {
+  text-shadow: 2px 2px #141313;
+  filter: contrast(95%);
+  background-image: url("/images/footer2.jpg");
+  background-size: cover;
+  width: 100%;
+  /* height: 300px; */
+  color: #FC904A;
+}
+
+.end-page li {
+  text-transform: capitalize;
+  list-style-type: none;
+}
+
+.end-page .logo i {
+  font-size: 20px;
+  padding: 10px;
+}
+
+.end-page .pulsanti img {
+  width: 40%;
+  display: block;
+  padding: 5px;
+}
+
+.end-page .deliv {
+  width: 161px;
+  margin-top: 50px;
+}
+
