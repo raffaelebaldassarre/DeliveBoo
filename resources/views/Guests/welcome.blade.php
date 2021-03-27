@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mb-4">
-                <h3 class="mt-2 text-cnt">Scegli tra queste categorie di cucina</h3>
+                <h3 class="mt-2 text-center">Scegli tra queste categorie di cucina</h3>
                 
                 <!-- Top content -->
                 <div class="top-content">
@@ -19,7 +19,7 @@
                                     <input class="form-check-input d-none" type="checkbox" :value="category.id" :id="'category'+index" v-model="categories_rest">
                                     <label class="form-check-label" :for="'category' + index">
                                         <img src="//placehold.it/600x400/000/fff?text=1" class="img-fluid mx-auto d-block" alt="img1">
-                                        <p class="text-cnt"> @{{ category.name }} </p>
+                                        <p class="text-center"> @{{ category.name }} </p>
                                     </label>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
 
             {{-- restaurants list --}}
             <div class="col-lg-12 ristoranti">
-                <h3 class="text-cnt" :class="categories_rest.length > 0 ? 'd-block':'d-none'">La tua ricerca ha trovato: @{{restaurants.length}} ristoranti</h3>
+                <h3 class="text-center" :class="categories_rest.length > 0 ? 'd-block':'d-none'">La tua ricerca ha trovato: @{{restaurants.length}} ristoranti</h3>
                 <div class="row mt-4">
                   <div class="col-lg-4 col-md-6 mb-4" v-for="restaurant in restaurants" >
                     <a :href="'restaurant/' + restaurant.slug" class="text">
@@ -44,7 +44,7 @@
                         <img class="card-img-top card-foto" :src="`storage/${restaurant.image}`" alt="">
                         <div class="card-body none">
                           <h4 class="card-title">
-                            <p class="text-cnt uppercase ">@{{ restaurant.name }}</p>
+                            <p class="text-center text-uppercase ">@{{ restaurant.name }}</p>
                             <li v-for="category in restaurant.categories">@{{category.name}}</li>
                           </h4>
                         </div>

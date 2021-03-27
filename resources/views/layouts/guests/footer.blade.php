@@ -6,7 +6,7 @@
             <img class="deliv" src="{{asset('images/deliveboologogif.gif')}}" alt="">
           </div>
         <div class="col-lg-2 col-md-2 mrg-20">
-            <h4 class="mrg-bt-50 uppercase">scopri di più</h4>
+            <h4 class="mrg-bt-50 text-uppercase">scopri di più</h4>
           <ul>
             <li>piani e tariffe</li>
             <li>codici promozionali</li>
@@ -19,7 +19,7 @@
 
         </div>
         <div class="col-lg-3 col-md-3 mrg-20">
-            <h4 class="mrg-bt-50 uppercase">società</h4>
+            <h4 class="mrg-bt-50 text-uppercase">società</h4>
           <ul>
             <li>chi siamo</li>
             <li>stampa</li>

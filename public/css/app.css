@@ -10988,13 +10988,15 @@ nav .white {
   color: #FC904A;
   text-shadow: 2px 2px #141313;
   padding: 8% 10%;
-  text-align: center;
 }
 
 .deliveboo h1 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: 550%;
   position: absolute;
-  top: 10%;
+  top: 20%;
   left: 35%;
   opacity: 1;
   -webkit-animation-name: position;
@@ -11008,10 +11010,32 @@ nav .white {
 }
 
 .deliveboo h4 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: 350%;
   padding: 2% 0 2% 0;
   position: absolute;
-  top: 25%;
+  top: 35%;
+  left: 35%;
+  opacity: 1;
+  -webkit-animation-name: position;
+          animation-name: position;
+  -webkit-animation-duration: 2.5s;
+          animation-duration: 2.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+}
+
+.deliveboo p {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 200%;
+  position: absolute;
+  top: 60%;
   left: 35%;
   opacity: 1;
   -webkit-animation-name: position;
@@ -11024,25 +11048,9 @@ nav .white {
           animation-timing-function: ease-in-out;
 }
 
-.deliveboo p {
-  font-size: 200%;
-  position: absolute;
-  top: 50%;
-  left: 35%;
-  opacity: 1;
-  -webkit-animation-name: position;
-          animation-name: position;
-  -webkit-animation-duration: 4.5s;
-          animation-duration: 4.5s;
-  -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-  -webkit-animation-timing-function: ease-in-out;
-          animation-timing-function: ease-in-out;
-}
-
 @-webkit-keyframes position {
   from {
-    left: 100%;
+    left: 70%;
     opacity: 0;
   }
 
@@ -11054,13 +11062,46 @@ nav .white {
 
 @keyframes position {
   from {
-    left: 100%;
+    left: 70%;
     opacity: 0;
   }
 
   to {
     left: 35%;
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .deliveboo {
+    text-align: center;
+  }
+
+  .deliveboo h1 {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 450%;
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .deliveboo h4 {
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    font-size: 250%;
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .deliveboo p {
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 150%;
+    -webkit-animation: none;
+            animation: none;
   }
 }
 
@@ -11336,6 +11377,10 @@ p {
   text-align: center;
   color: #FC904A;
   text-shadow: black;
+}
+
+.ristoranti a:hover {
+  text-decoration: none;
 }
 
 .ristoranti h3 {

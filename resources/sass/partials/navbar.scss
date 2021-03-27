@@ -1,7 +1,6 @@
 nav{
-    background-color: #FC904A;
+    background-color: $arancio;
     display: flex;
-
     img{
         height: 65px;
     }
@@ -10,9 +9,11 @@ nav{
         padding-right: 20px;
     }
 }
+
 .center{
     text-align: center;
 }
+
 .just-end{
     justify-content: flex-end;
     float: right;
