@@ -50018,6 +50018,25 @@ var app = new Vue({
     })
   }
 });
+$("#carousel-example").on("slide.bs.carousel", function (e) {
+  var $e = $(e.relatedTarget);
+  var idx = $e.index();
+  var itemsPerSlide = 5;
+  var totalItems = $(".carousel-item").length;
+
+  if (idx >= totalItems - (itemsPerSlide - 1)) {
+    var it = itemsPerSlide - (totalItems - idx);
+
+    for (var i = 0; i < it; i++) {
+      // append slides to end
+      if (e.direction == "left") {
+        $(".carousel-item").eq(i).appendTo(".carousel-inner");
+      } else {
+        $(".carousel-item").eq(0).appendTo(".carousel-inner");
+      }
+    }
+  }
+});
 /* $(function () {
 
   $(window).scroll(function () {
@@ -50164,8 +50183,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/raffaelessd/Boolean/Progetto Finale/DeliveBoo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\willi\Desktop\Boolean\DeliveBoo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
