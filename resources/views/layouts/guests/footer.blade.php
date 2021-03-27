@@ -1,11 +1,11 @@
 <footer>
   <div class="end-page">
     <div class="container ">
-      <div class="row ">
+      <div class="row">
           <div class="col-lg-3 col-md-3">
             <img class="deliv" src="{{asset('images/deliveboologogif.gif')}}" alt="">
           </div>
-        <div class="col-lg-2 col-md-2">
+        <div class="col-lg-2 col-md-2 mrg-20">
             <h4 class="mrg-bt-50 uppercase">scopri di più</h4>
           <ul>
             <li>piani e tariffe</li>
@@ -18,7 +18,7 @@
           </ul>
 
         </div>
-        <div class="col-lg-2 col-md-2">
+        <div class="col-lg-3 col-md-3 mrg-20">
             <h4 class="mrg-bt-50 uppercase">società</h4>
           <ul>
             <li>chi siamo</li>
@@ -31,7 +31,7 @@
           </ul>
 
         </div>
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-3 col-md-3 mrg-20">
           <div class="logo mrg-bt-50">
             <i class="fab fa-facebook-f"></i>
             <i class="fab fa-twitter"></i>

@@ -5,13 +5,10 @@
 @endsection
 
 @section('content')
-
-    <h1>DeliveBoo</h1>
-
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mb-4">
-                <h3 class="mt-2">Scegli tra le categorie</h3>
+                <h3 class="mt-2 text-cnt">Scegli tra queste categorie di cucina</h3>
                 
                 <!-- Top content -->
                 <div class="top-content">
@@ -22,17 +19,15 @@
                                     <input class="form-check-input d-none" type="checkbox" :value="category.id" :id="'category'+index" v-model="categories_rest">
                                     <label class="form-check-label" :for="'category' + index">
                                         <img src="//placehold.it/600x400/000/fff?text=1" class="img-fluid mx-auto d-block" alt="img1">
-                                        @{{ category.name }}
+                                        <p class="text-cnt"> @{{ category.name }} </p>
                                     </label>
                                 </div>
                             </div>
-                            <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
+                            <a id="prev" class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+                              <i class="fa fa-chevron-left" aria-hidden="true"></i>
                             </a>
-                            <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
+                            <a id="next" class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+                              <i class="fa fa-chevron-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -40,12 +35,12 @@
             </div>
 
             {{-- restaurants list --}}
-            <div class="col-lg-12">
-                <h3 class="text-cnt">La tua ricerca ha trovato: @{{restaurants.length}} ristoranti</h3>
+            <div class="col-lg-12 ristoranti">
+                <h3 class="text-cnt" :class="categories_rest.length > 0 ? 'd-block':'d-none'">La tua ricerca ha trovato: @{{restaurants.length}} ristoranti</h3>
                 <div class="row mt-4">
                   <div class="col-lg-4 col-md-6 mb-4" v-for="restaurant in restaurants" >
-                    <a :href="'restaurant/' + restaurant.slug">
-                      <div class=" h-100 relative" style="border: 1px solid black">
+                    <a :href="'restaurant/' + restaurant.slug" class="text">
+                      <div class=" h-100 relative">
                         <img class="card-img-top card-foto" :src="`storage/${restaurant.image}`" alt="">
                         <div class="card-body none">
                           <h4 class="card-title">

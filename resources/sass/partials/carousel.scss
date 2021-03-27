@@ -197,13 +197,14 @@ label::before {
 
 label img {
   height: 100px;
-  width: 100px;
+  border-radius: 5%;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
 }
 
 :checked + label {
-  border-color: #ddd;
+  border-color: $arancio;
+  border-radius: 5%;
 }
 
 :checked + label::before {
@@ -216,4 +217,22 @@ label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
+}
+
+
+
+#prev{
+  width: fit-content;
+  i {
+    color: $arancio;
+    font-size: 2rem;
+  }
+}
+
+#next {
+  width: fit-content;
+  i {
+    color: $arancio;
+    font-size: 2rem;
+  }
 }
