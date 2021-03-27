@@ -33,7 +33,7 @@
 <div class="container">
     <div class="col-lg-6 p-0">
         <h3 class="py-3">Inserisci i tuoi dati per la consegna</h3>
-        <form action="{{route('cart.store')}}" method="post">
+        <form action="{{route('cart.store')}}" method="post" id="payment-order-user" name="payment-order-user" onsubmit="testform">
     
             @csrf
     
@@ -87,24 +87,37 @@
                 <div style="width:60%; margin:auto;">
                   <div id="dropin-container"></div>
                 </div>
-                <button type="submit" style="background-color:yellow" id="submit-button">Submit payment</button>
+                <button style="background-color:yellow" id="submit-button">Submit payment</button>
               </div>
             
             
              <script>
                
-               var button = document.querySelector('#submit-button');
+               var form = document.getElementById('payment-order-user');
+               /* var button = document.querySelector('#submit-button'); */
             
                braintree.dropin.create({
                  authorization: "sandbox_zjph3bx7_x2h6cngzkjxbdss9",
                  container: '#dropin-container'
                }, function (createErr, instance) {
-                 button.addEventListener('click', function () {
+                 form.addEventListener('submit', function () {
+                    var name = document.getElementById("name").value;
+                    var lastname = document.getElementById("lastname").value;
+                    var phone_number = document.getElementById("phone_number").value;
+                    var address = document.getElementById("address").value;
+                    if (name === '' || lastname === '' || phone_number === '' || address === '')
+                    {
+                        alert("Inserisci tutti i dati richiesti per la spedizione");
+                        return false;
+                    } else {
+                        event.preventDefault();
+                    }
                    instance.requestPaymentMethod(function (err, payload) {
                      $.get('{{ route("payment.process") }}', {payload}, function (response) {
                        if (response.success) {
                          localStorage.clear();
                          alert('Payment successfull!');
+                         form.submit();
                        } else {
                          alert('Payment failed');
                        }
@@ -112,6 +125,12 @@
                    });
                  });
                });
+               
+
+               function testform()
+                {
+                    
+                }
              </script>
             
             {{-- <button type="submit" class="btn btn-outline-success btn-lg">Submit</button> --}}
