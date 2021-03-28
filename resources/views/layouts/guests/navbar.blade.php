@@ -1,4 +1,4 @@
-<nav id="navbar-fix" class="navbar navbar-expand-md navbar-expand-sm navbar-light shadow-sm justify-content-between" id="filippo">
+<nav id="navbar-fix" class="navbar navbar-expand-md navbar-expand-sm navbar-light justify-content-between" id="filippo">
     <a class="navbar-brand" href="{{ url('/') }}">
         {{-- {{ config('app.name', 'Laravel') }} --}}
         <img src="{{asset('images/logogif.gif')}}" alt="">
