@@ -11,17 +11,30 @@
   }
   
   li{
+    transition-duration: 1s;
     text-transform: capitalize;
     list-style-type: none;
+    cursor: pointer;
+  }
+
+  li:hover{
+    color: white;
   }
   .logo i{
+    transition-duration: 1s;
     font-size: 20px;
     padding: 10px;
+    cursor: pointer;
+  }
+  i:hover{
+    color: white;
+    
   }
   .pulsanti img{
     width: 40%;
     display: block;
     padding: 5px;
+    cursor: pointer;
   }
   .deliv{
     width: 161px;

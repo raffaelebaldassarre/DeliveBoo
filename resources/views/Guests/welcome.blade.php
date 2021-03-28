@@ -45,7 +45,7 @@
                         <div class="card-body none">
                           <h4 class="card-title">
                             <p class="text-center text-uppercase ">@{{ restaurant.name }}</p>
-                            <li v-for="category in restaurant.categories">@{{category.name}}</li>
+                            <p v-for="category in restaurant.categories">@{{category.name}}</p>
                           </h4>
                         </div>
                       </div>
