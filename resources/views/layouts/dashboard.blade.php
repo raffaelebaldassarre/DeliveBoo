@@ -76,19 +76,12 @@
         </div>
     </nav>
 
-    <div class="container py-4">
+
         <div class="row">
-            {{-- <div class="col-xs-12 col-md-3 col-lg-2">
-                <ul class="list-unstyled">
-                    <li><a href="{{ route('admin.index')}}"><i class="fas fa-tachometer-alt    "></i> Dashboard</a></li>
-                    <li><a href="{{ route('admin.restaurants.index')}}"><i class="fas fa-utensils"></i> Ristoranti</a></li>
-                </ul>
-            </div> --}}
             @yield('sideMap')
             <main class="col-xs-12 col-md-9 col-lg-10">
                 @yield('content')
             </main>
         </div>
-    </div>
 </body>
 </html>
