@@ -9,7 +9,7 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                       <div class=" h-100 relative">
                         <img src="{{asset('storage/' . $restaurant->image)}}" alt="" style="height: 150px">
-                        <div class="card-body none">
+                        <div class="card-body">
                           <h4 class="card-title">
                             <p class="text-center text-uppercase ">{{ $restaurant->name }}</p>
                             <p class="text-center text-uppercase ">{{ $restaurant->address }}</p>
