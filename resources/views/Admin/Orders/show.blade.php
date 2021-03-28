@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('sideMap')
-<div class="col-xs-12 col-md-3 col-lg-2">
+<div class="col-xs-12 col-md-3 col-lg-2" id="sidemap">
     <a href="{{ route('admin.restaurants.index')}}"><i class="fas fa-utensils"></i> Ristoranti</a><br>
     <a href="{{route('admin.orders.index', ['slug'=> $restaurant->slug])}}" ><i class="fas fa-pencil-ruler fa-xs fa-fw"></i>Visualizza gli ordini del tuo ristorante</a>
 </div>

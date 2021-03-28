@@ -2,8 +2,8 @@
 @include('layouts.guests.navbar')
 
     <div class="admin_wrapper d-flex">
-        @yield('sideMap')
-            <main class="col-xs-12 col-md-9 col-lg-10">
+            @yield('sideMap')
+            <main class="col-xs-10 col-md-9 col-lg-10" id="admin_various_content">
                 @yield('content')
             </main>
     </div>
