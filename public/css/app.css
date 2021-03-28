@@ -11430,6 +11430,13 @@ p {
   margin-top: 40px;
 }
 
+#sidemap {
+  min-height: calc(100% - 91.23px);
+  padding: 20px;
+  background-color: #fc904a;
+  border: 1px solid black;
+}
+
 .none {
   display: none;
 }
