@@ -1,0 +1,21 @@
+#success_container {
+    width: 65%;
+    margin: auto;
+    border: 2px solid $arancio;
+    border-radius: 10px;
+    padding: 5rem 0;
+    box-shadow: 0  5px 10px rgba(10, 6, 1, 0.2),;
+    img {
+        border-radius: 10px;
+
+    }
+    a {
+        border: 2px solid $arancio;
+        color: $arancio;
+        margin: 2rem 0;
+    }
+    a:hover {
+        background-color: $arancio;
+        color: white;
+    }
+}

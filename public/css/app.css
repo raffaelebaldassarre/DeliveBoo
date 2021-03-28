@@ -11450,6 +11450,30 @@ p {
   color: white;
 }
 
+#success_container {
+  width: 65%;
+  margin: auto;
+  border: 2px solid #fc904a;
+  border-radius: 10px;
+  padding: 5rem 0;
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+}
+
+#success_container img {
+  border-radius: 10px;
+}
+
+#success_container a {
+  border: 2px solid #fc904a;
+  color: #fc904a;
+  margin: 2rem 0;
+}
+
+#success_container a:hover {
+  background-color: #fc904a;
+  color: white;
+}
+
 .none {
   display: none;
 }

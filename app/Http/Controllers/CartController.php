@@ -57,8 +57,9 @@ class CartController extends Controller
         return redirect()->route('guests.success', compact('new_order'));
     }
 
-    public function success()
+    public function success(Order $order)
     {
-        return view('guests.success');
+        $order = Order::orderBy("id", "desc")->first();
+        return view('guests.success', compact('order'));
     }
 }
