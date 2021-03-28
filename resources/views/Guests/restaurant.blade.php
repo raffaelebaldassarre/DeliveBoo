@@ -43,7 +43,7 @@
                   <hr>
                 </div>
                 <h3>Prezzo Totale: @{{totalPrice}} €</h3>
-                <a href="{{route ('cart.index', ['slug' => $restaurant->slug]) }}"><button type="button" class="btn btn-primary">Checkout</button></a>
+                <a href="{{route ('cart.index', ['slug' => $restaurant->slug]) }}" v-if="orderCart.length > 0 || orderCart.length != ''"><button type="button" class="btn btn-primary">Checkout</button></a>
               </div>
             </div>
 
