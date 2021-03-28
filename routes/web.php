@@ -36,4 +36,6 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
 
     Route::get('restaurants/{slug}/orders', 'OrderController@index')->name('orders.index');
     Route::get('restaurants/{slug}/orders/{order}', 'OrderController@show')->name('orders.show');
+
+    Route::get('restaurants/{slug}/charts', 'ChartsController@index')->name('charts');;
 });

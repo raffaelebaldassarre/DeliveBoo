@@ -20,6 +20,8 @@
                             <a href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i></a>
                             <a href="{{route('admin.dishes.index', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-utensils fa-xs fa-fw"></i></a>
                             <a href="{{route('admin.orders.index', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-book fa-xs fa-fw"></i></a>
+                            <a href="{{route('admin.charts', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-chart-line"></i></a>
+                            
                           </div>
                         </div>
                       </div>
