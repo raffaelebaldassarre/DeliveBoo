@@ -1,5 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('sideMap')
+<div class="col-xs-12 col-md-3 col-lg-2">
+    <a href="{{ route('admin.restaurants.index')}}"><i class="fas fa-utensils"></i> Ristoranti</a>
+</div>
+@endsection
+
 @section('content')
         <h1>I MIEI PIATTI</h1>
         <a name="" id="" class="btn btn-primary" href="{{route('admin.dishes.create', ['slug' => $restaurant->slug])}}" role="button">INSERISCI UN NUOVO PIATTO</a>

@@ -1,5 +1,11 @@
 @extends("layouts.dashboard")
 
+@section('sideMap')
+<div class="col-xs-12 col-md-3 col-lg-2">
+    <a href="{{ route('admin.restaurants.index')}}"><i class="fas fa-utensils"></i> Ristoranti</a>
+</div>
+@endsection
+
 @section("content")
 
     @if ($errors->any())
@@ -46,7 +52,7 @@
                                 </div>
                             </div>
 
-    <h1>INSERISCI UN RISTORANTE</h1>
+    <h1>AGGIORNA I DATI DEL RISTORANTE</h1>
     <form action="{{route('admin.restaurants.update', ['restaurant'=> $restaurant->slug])}}" method="post" enctype="multipart/form-data">
 
         @csrf
