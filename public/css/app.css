@@ -11350,7 +11350,7 @@ label img {
 .relative {
   transition-duration: 1s;
   border-radius: 15px;
-  box-shadow: 3px 3px #d5c2c2;
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
 }
 
 .relative img {
@@ -11365,6 +11365,11 @@ label img {
 
 .relative:hover img {
   filter: grayscale(0.6);
+}
+
+.row {
+  margin-top: 2%;
+  color: #FC904A;
 }
 
 p {
@@ -11403,19 +11408,32 @@ p {
 }
 
 .end-page li {
+  transition-duration: 1s;
   text-transform: capitalize;
   list-style-type: none;
+  cursor: pointer;
+}
+
+.end-page li:hover {
+  color: white;
 }
 
 .end-page .logo i {
+  transition-duration: 1s;
   font-size: 20px;
   padding: 10px;
+  cursor: pointer;
+}
+
+.end-page i:hover {
+  color: white;
 }
 
 .end-page .pulsanti img {
   width: 40%;
   display: block;
   padding: 5px;
+  cursor: pointer;
 }
 
 .end-page .deliv {
@@ -11425,5 +11443,77 @@ p {
 
 .mrg-20 {
   margin-top: 40px;
+}
+
+.none {
+  display: none;
+}
+
+.dish {
+  width: 100%;
+  height: 100%;
+}
+
+.txt-cnt {
+  text-align: center;
+}
+
+.arancio {
+  color: #FC904A;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.just-con-bet {
+  justify-content: space-between;
+}
+
+.img-cont {
+  height: 30%;
+}
+
+.dish-card {
+  max-height: 425px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+}
+
+.margin-tb-30 {
+  margin: 30px 0;
+  padding-left: 15px;
+}
+
+.cart {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+  color: #FC904A;
+}
+
+.single-item {
+  padding: 5px 20px;
+}
+
+.single-item span {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.single-item .delete {
+  margin-left: 10px;
+}
+
+.single-item #minus,
+.single-item #plus {
+  background-color: #FC904A;
+  border-radius: 50%;
+  border: 1px solid black;
+  padding: 5px 12px;
+  color: black;
+  cursor: pointer;
 }
 

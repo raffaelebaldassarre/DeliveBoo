@@ -42,7 +42,7 @@
                     <a :href="'restaurant/' + restaurant.slug" class="text">
                       <div class=" h-100 relative">
                         <img class="card-img-top card-foto" :src="`storage/${restaurant.image}`" alt="">
-                        <div class="card-body none">
+                        <div class="card-body">
                           <h4 class="card-title">
                             <p class="text-center text-uppercase ">@{{ restaurant.name }}</p>
                             <li v-for="category in restaurant.categories">@{{category.name}}</li>
