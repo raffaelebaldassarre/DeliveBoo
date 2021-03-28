@@ -1,10 +1,34 @@
 .admin_wrapper{
     margin-top: 91.23px;
+
+    #admin_various_content{
+        padding: 20px 0 20px 20px;
+    }
+
+    #sidemap{
+        padding: 20px;
+        background-color: $arancio;
+        border: 1px solid black;
+        width: fit-content;
+    
+        a{
+            color: white;
+            font-size: 2rem;
+        }
+    }
+
 }
 
-#sidemap{
-    padding: 20px;
-    background-color: $arancio;
-    border: 1px solid black;
-    color: white;
+
+#show_rest_container{
+    display: flex;
+    justify-content: center;
+
+    #single_rest_show{
+        width: fit-content;
+        margin-right: 0;
+        text-align: center;
+    }
 }
+
+
