@@ -10962,6 +10962,7 @@ nav .white {
   left: 0;
   z-index: 1;
   width: 100%;
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
 }
 
 .center {
@@ -11453,25 +11454,39 @@ p {
 #success_container {
   width: 65%;
   margin: auto;
+  margin-top: 91.23px;
   border: 2px solid #fc904a;
   border-radius: 10px;
-  padding: 5rem 0;
+  padding: 5rem 2rem;
   box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
 }
 
 #success_container img {
   border-radius: 10px;
+  width: 65%;
+  margin: 3rem 0;
 }
 
 #success_container a {
   border: 2px solid #fc904a;
   color: #fc904a;
-  margin: 2rem 0;
+  margin: 2rem;
 }
 
 #success_container a:hover {
   background-color: #fc904a;
   color: white;
+}
+
+@media all and (max-width: 768px) {
+  #success_container img {
+    width: 100%;
+    margin: 0;
+  }
+
+  #success_container a {
+    margin: 0;
+  }
 }
 
 .none {

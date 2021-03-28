@@ -1,21 +1,35 @@
 #success_container {
     width: 65%;
     margin: auto;
+    margin-top: 91.23px;
     border: 2px solid $arancio;
     border-radius: 10px;
-    padding: 5rem 0;
-    box-shadow: 0  5px 10px rgba(10, 6, 1, 0.2),;
+    padding: 5rem 2rem;
+    box-shadow: 0  5px 10px rgba(10, 6, 1, 0.2);
     img {
         border-radius: 10px;
-
+        width: 65%;
+        margin: 3rem 0;
     }
     a {
         border: 2px solid $arancio;
         color: $arancio;
-        margin: 2rem 0;
+        margin: 2rem;
     }
     a:hover {
         background-color: $arancio;
         color: white;
+    }
+}
+
+@media all and (max-width: 768px) {
+    #success_container {
+        img {
+            width: 100%;
+            margin: 0;
+        }
+        a {
+            margin: 0;
+        }
     }
 }
