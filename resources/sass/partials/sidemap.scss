@@ -1,10 +1,6 @@
 .admin_wrapper{
     margin-top: 91.23px;
 
-    #admin_various_content{
-        padding: 20px 0 20px 20px;
-    }
-
     #sidemap{
         padding: 20px;
         background-color: $arancio;
@@ -17,7 +13,12 @@
         }
     }
 
+    .adm_rest_container{
+        margin-top: 4%;
+    }
 }
+
+
 
 
 #show_rest_container{

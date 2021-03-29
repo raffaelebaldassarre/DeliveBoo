@@ -11444,10 +11444,6 @@ p {
   margin-top: 91.23px;
 }
 
-.admin_wrapper #admin_various_content {
-  padding: 20px 0 20px 20px;
-}
-
 .admin_wrapper #sidemap {
   padding: 20px;
   background-color: #fc904a;
@@ -11460,6 +11456,10 @@ p {
 .admin_wrapper #sidemap a {
   color: white;
   font-size: 2rem;
+}
+
+.admin_wrapper .adm_rest_container {
+  margin-top: 4%;
 }
 
 #show_rest_container {
