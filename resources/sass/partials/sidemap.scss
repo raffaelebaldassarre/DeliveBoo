@@ -2,8 +2,16 @@
     margin-top: 91.23px;
     
     #right_admin_content{
-        width: 80%;
+        min-height: calc(100vh - 91.23px);
         margin: auto;
+        display: flex;
+
+        .container label{
+            margin: 10px 0;
+            width: fit-content;
+            border: 3px solid $arancio;
+            border-radius: 5px;
+        }
     }
 
     #sidemap{
@@ -25,11 +33,25 @@
 }
 
 
+#available-dish{
+    display: flex;
+    align-items: center;
+    input{
+        width: fit-content;
+        margin: 0 20px;
+    }
+}
 
 
 #show_rest_container{
+    height: fit-content;
     display: flex;
     justify-content: center;
+    /* align-items: center; */
+    border: 3px solid $arancio;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-radius: 3%;
 
     #single_rest_show{
         width: fit-content;

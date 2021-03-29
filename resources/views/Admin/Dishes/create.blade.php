@@ -59,7 +59,7 @@
 
         <br>
         {{-- AVAILABLE --}}
-        <div class="form-group">
+        <div class="form-group" id="available-dish">
             <label for="available">Available:</label>
             <input type="radio" class="form-control" id="available" name="available" value="1"> <span>TRUE</span> 
             <input type="radio" class="form-control" id="available" name="available" value="0"> <span>FALSE</span> 
