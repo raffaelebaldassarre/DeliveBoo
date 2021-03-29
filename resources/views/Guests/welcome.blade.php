@@ -20,7 +20,7 @@
                               <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" :class="index==0 ? 'active' : '' " v-for="(category, index) in categories">
                                   <input class="form-check-input d-none" type="checkbox" :value="category.id" :id="'category'+index" v-model="categories_rest">
                                   <label class="form-check-label cat_label" :for="'category' + index">
-                                      <img src="//placehold.it/600x400/000/fff?text=1" class="img-fluid mx-auto d-block" alt="img1">
+                                      <img :src="`images/categories_foto/${category.name}.jpg`" class="img-fluid mx-auto d-block" alt="img1">
                                       <p class="text-center"> @{{ category.name }} </p>
                                   </label>
                               </div>
