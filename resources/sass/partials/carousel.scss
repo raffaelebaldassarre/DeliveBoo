@@ -162,7 +162,7 @@
   }
 }
 
-label {
+label.cat_label {
   border: 1px solid #fff;
   padding: 10px;
   display: block;
@@ -177,7 +177,7 @@ label {
   user-select: none;
 }
 
-label::before {
+label.cat_label::before {
   background-color: white;
   color: white;
   content: " ";
@@ -195,25 +195,25 @@ label::before {
   transform: scale(0);
 }
 
-label img {
+label.cat_label img {
   height: 100px;
   border-radius: 5%;
   transition-duration: 0.2s;
   transform-origin: 50% 50%;
 }
 
-:checked + label {
+:checked + label.cat_label {
   border-color: $arancio;
   border-radius: 5%;
 }
 
-:checked + label::before {
+:checked + label.cat_label::before {
   content: "✓";
   background-color: grey;
   transform: scale(1);
 }
 
-:checked + label img {
+:checked + label.cat_label img {
   transform: scale(0.9);
   box-shadow: 0 0 5px #333;
   z-index: -1;
