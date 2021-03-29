@@ -3,25 +3,39 @@
     border-radius: 10px;
     margin: 2rem;
     padding: 2rem;
+    box-shadow: 0  5px 10px rgba(10, 6, 1, 0.2);
     h2 {
         font-size: 2rem;
     }
-    ul {
-        list-style: none;
-        li {
-            font-size: 1.5rem;
-        }
+    td {
+        font-size: 1.15rem;
     }
     label {
         border: 0;
     }
+    #trash {
+        background-color: white;
+        color: red;
+        border: 2px solid red;
+    }
+    #trash:hover {
+        background-color: red;
+        color: white;
+    }
+    #minus,
+    #plus,
     #submit-button {
         border: 2px solid $arancio;
         color: $arancio;
-        margin: 2rem;
     }
+    #minus:hover,
+    #plus:hover, 
     #submit-button:hover {
         background-color: $arancio;
         color: white;
+    }
+
+    #submit-button {
+        margin: 2rem;
     }
 }
