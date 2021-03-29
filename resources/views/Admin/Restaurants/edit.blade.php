@@ -23,6 +23,7 @@
     <a class="btn btn-danger" data-toggle="modal" data-target="#delete-{{ $restaurant->slug }}"
         role="button">
         <i class="fas fa-trash-alt"></i>
+        ELIMINA IL RISTORANTE
     </a>
     <!-- Modal -->
     <div class="modal fade" id="delete-{{ $restaurant->slug }}" tabindex="-1" role="dialog">
@@ -98,7 +99,7 @@
         <br>
         <span>INDICA LA CATEGORIA DELLA TUA CUCINA: </span>
         <div class="form-group">
-          <label for="categories"></label>
+          <label for="categories">SELEZIONE LE CATEGORIE</label>
           <select class="form-control" name="categories[]" id="categories" multiple>
                 @foreach ($categories as $cat)
                     <option value="{{$cat->id}}" {{$restaurant->categories->contains($cat) ? 'selected' : ''}}>{{$cat->name}}</option>
