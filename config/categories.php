@@ -2,64 +2,58 @@
 
 return[
         [
-            'name' => 'Americano'
+            'name' => 'Americano',
         ],
         [
-            'name' => 'Asiatico'
+            'name' => 'Asiatico',
         ],
         [
-            'name' => 'Hamburger'
+            'name' => 'Carne',
         ],
         [
-            'name' => 'Carne'
+            'name' => 'Cinese',
         ],
         [
-            'name' => 'Cinese'
+            'name' => 'Dessert',
         ],
         [
-            'name' => 'Dessert'
+            'name' => 'Fast-food',
         ],
         [
-            'name' => 'Fast-food'
+            'name' => 'Pizza',
         ],
         [
-            'name' => 'Pizza'
+            'name' => 'Sushi',
         ],
         [
-            'name' => 'Sushi'
+            'name' => 'Kebab',
         ],
         [
-            'name' => 'Kebab'
+            'name' => 'Senza glutine',
         ],
         [
-            'name' => 'Internazionale'
+            'name' => 'Barbecue',
         ],
         [
-            'name' => 'Senza glutine'
+            'name' => 'Messicano',
         ],
         [
-            'name' => 'Barbecue'
+            'name' => 'Pesce',
         ],
         [
-            'name' => 'Messicano'
+            'name' => 'Cucina Romana',
         ],
         [
-            'name' => 'Pesce'
+            'name' => 'Cucina Siciliana',
         ],
         [
-            'name' => 'Cucina Romana'
+            'name' => 'Cucina Pugliese',
         ],
         [
-            'name' => 'Cucina Siciliana'
+            'name' => 'Cucina Lombarda',
         ],
         [
-            'name' => 'Cucina Pugliese'
-        ],
-        [
-            'name' => 'Cucina Lombarda'
-        ],
-        [
-            'name' => 'Vegana'
+            'name' => 'Vegana',
         ]
 ];
 

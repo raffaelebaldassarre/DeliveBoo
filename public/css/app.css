@@ -11346,6 +11346,7 @@ label img {
   transition-duration: 1s;
   border-radius: 15px;
   box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+  max-height: 350px;
 }
 
 .relative img {
@@ -11542,6 +11543,7 @@ p {
 
 .just-con-bet {
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .img-cont {
@@ -11552,6 +11554,7 @@ p {
   max-height: 425px;
   border-radius: 15px;
   box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+  margin-bottom: 30px;
 }
 
 .margin-tb-30 {
