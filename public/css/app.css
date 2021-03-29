@@ -11605,6 +11605,9 @@ p {
 .just-con-bet {
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 0 60px;
+  overflow-y: scroll;
+  height: 425px;
 }
 
 .img-cont {
@@ -11618,8 +11621,13 @@ p {
   margin-bottom: 30px;
 }
 
+.dish-card img {
+  border-radius: 15px 15px 0 0;
+}
+
 .margin-tb-30 {
   margin: 30px 0;
+  padding-left: 15px;
 }
 
 .cart {
@@ -11629,13 +11637,19 @@ p {
   border-radius: 15px;
   box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
   color: #fc904a;
+  z-index: 9999;
+  background-color: white;
 }
 
 .single-item {
   padding: 5px 20px;
 }
 
-.single-item span {
+.single-item a {
+  text-decoration: none;
+}
+
+.single-item .quantity {
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -11652,6 +11666,18 @@ p {
   padding: 5px 12px;
   color: black;
   cursor: pointer;
+}
+
+.cart-pos {
+  top: 40%;
+  right: 0;
+}
+
+@media screen and (max-width: 991px) and (min-width: 769px) {
+  .quantity {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 .receipt_container {
