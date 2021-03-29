@@ -1,0 +1,27 @@
+.receipt_container {
+    border: 2px solid $arancio;
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 2rem;
+    h2 {
+        font-size: 2rem;
+    }
+    ul {
+        list-style: none;
+        li {
+            font-size: 1.5rem;
+        }
+    }
+    label {
+        border: 0;
+    }
+    #submit-button {
+        border: 2px solid $arancio;
+        color: $arancio;
+        margin: 2rem;
+    }
+    #submit-button:hover {
+        background-color: $arancio;
+        color: white;
+    }
+}
