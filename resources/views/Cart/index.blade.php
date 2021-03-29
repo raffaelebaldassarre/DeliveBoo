@@ -98,7 +98,7 @@
                     <div {{-- style="width:60%; margin:auto;" --}}>
                         <div id="dropin-container"></div>
                     </div>
-                    <button id="submit-button" class="btn btn-lg btn-outline font-weight-bold p-4">Submit payment</button>
+                    <button id="submit-button" class="btn btn-lg btn-outline font-weight-bold p-4">Procedi al pagamento</button>
                 </div>
                 
                 
@@ -127,10 +127,10 @@
                             $.get('{{ route("payment.process") }}', {payload}, function (response) {
                             if (response.success) {
                                 localStorage.clear();
-                                alert('Payment successfull!');
+                                alert('Pagamento completato con successo!!!');
                                 form.submit();
                             } else {
-                                alert('Payment failed');
+                                alert('Pagamento fallito, controlla i dati inseriti o verifica la validità della tua carta.');
                             }
                             }, 'json');
                         });

@@ -42,7 +42,7 @@
               <div class="row mt-4">
                 <div class="col-lg-4 col-md-6 mb-4" v-for="restaurant in restaurants" >
                   <a :href="'restaurant/' + restaurant.slug" class="text">
-                    <div class=" h-100 relative">
+                    <div class=" h-100 relative card-fix">
                       <img class="card-img-top card-foto" :src="`storage/${restaurant.image}`" alt="">
                       <div class="card-body">
                         <h4 class="card-title">
