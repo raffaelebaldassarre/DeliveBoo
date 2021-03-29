@@ -1,7 +1,7 @@
 @extends("layouts.dashboard")
 
 @section('sideMap')
-<div class="col-xs-12 col-md-3 col-lg-2">
+<div class="col-xs-12 col-md-3 col-lg-2" id="sidemap">
     <a href="{{ route('admin.restaurants.index')}}"><i class="fas fa-utensils"></i> Ristoranti</a>
 </div>
 @endsection
@@ -19,38 +19,38 @@
     @endif
 
     <!-- Modal -->
-                            <!-- Button trigger modal -->
-                            <a class="btn btn-danger" data-toggle="modal" data-target="#delete-{{ $restaurant->slug }}"
-                                role="button">
-                                <i class="fas fa-trash-alt"></i>
-                            </a>
-                            <!-- Modal -->
-                            <div class="modal fade" id="delete-{{ $restaurant->slug }}" tabindex="-1" role="dialog">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Will delete
-                                                <em class="font-weight-bold">"{{ $restaurant->name }}"</em>
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            This is irreverisible. Are you sure?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nooooo</button>
-                                            <form action="{{ route('admin.restaurants.destroy', ['restaurant' => $restaurant->slug]) }}"
-                                                method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input type="submit" value="Yeah, Delete" class="btn btn-danger">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Button trigger modal -->
+    <a class="btn btn-danger" data-toggle="modal" data-target="#delete-{{ $restaurant->slug }}"
+        role="button">
+        <i class="fas fa-trash-alt"></i>
+    </a>
+    <!-- Modal -->
+    <div class="modal fade" id="delete-{{ $restaurant->slug }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Will delete
+                        <em class="font-weight-bold">"{{ $restaurant->name }}"</em>
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    This is irreverisible. Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Nooooo</button>
+                    <form action="{{ route('admin.restaurants.destroy', ['restaurant' => $restaurant->slug]) }}"
+                        method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Yeah, Delete" class="btn btn-danger">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <h1>AGGIORNA I DATI DEL RISTORANTE</h1>
     <form action="{{route('admin.restaurants.update', ['restaurant'=> $restaurant->slug])}}" method="post" enctype="multipart/form-data">

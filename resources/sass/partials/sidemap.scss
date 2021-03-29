@@ -1,8 +1,9 @@
 .admin_wrapper{
     margin-top: 91.23px;
-
-    #admin_various_content{
-        padding: 20px 0 20px 20px;
+    
+    #right_admin_content{
+        width: 80%;
+        margin: auto;
     }
 
     #sidemap{
@@ -17,7 +18,13 @@
         }
     }
 
+    .adm_rest_container{
+        margin-top: 4%;
+        max-width: 100vw;
+    }
 }
+
+
 
 
 #show_rest_container{
