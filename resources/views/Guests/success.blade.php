@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="success_container" class="text-center col-lg-12">
+<div id="success_container" class="text-center mx-auto">
     <img src="{{asset('images/logogif.gif')}}" alt=""> 
         <h1 class="my-4">Grazie per il tuo ordine!</h1> 
         <p>A breve riceverai una e-mail con il riepilogo dell'ordine.</p> 

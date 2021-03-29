@@ -2,14 +2,24 @@
 
 @section('content')
 
-    <div class="text-center col-lg-6">
+    <div class="text-center col-lg-7">
         <div id="app">
-            <div class="receipt_container">
+            <div class="receipt_container bg-white">
                 <h3 id="rest_id" class="d-none">{{ $restaurant->id }}</h3>
                 <h2>Riepilogo Ordine:</h2>
-                <ul>
-                    <li v-for="(item, index) in orderCart">@{{item.quantity}}x @{{item.name}} &rArr; @{{item.totalDishPrice}} €</li>
-                </ul>
+                <table class="table">
+                    <tbody>
+                        <tr v-for="(item, index) in orderCart">
+                            <td class="align-middle">@{{item.quantity}}x @{{item.name}} &rArr; @{{item.totalDishPrice}} €</td>
+                            <td class="d-flex justify-content-around">                            
+                                <button id="minus" class="btn btn-outline" @click="minusDish(item)"><i class="fas fa-minus"></i></button>
+                                <button id="plus" class="btn btn-outline" @click="moreDish(item)"><i class="fas fa-plus"></i></button>
+                                <button id="trash" class="btn btn-outline" @click="deleteDish(index)" class="btn-danger delete"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
                 <h2 v-if="totalPrice != 0">Prezzo Totale: @{{totalPrice}} €</h2>
             </div>
         </div>
@@ -18,7 +28,7 @@
 
 @section('payment')
 
-    <div class="col-lg-6">
+    <div class="col-lg-5">
         <div class="receipt_container text-center bg-white">
             <h3 class="text-center py-3">Inserisci i tuoi dati per la consegna</h3>
             <form action="{{route('cart.store')}}" method="post" id="payment-order-user" name="payment-order-user" onsubmit="testform">
@@ -60,7 +70,7 @@
                 @error('phone_number')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-
+                
                 {{-- EMAIL --}}
                 <div class="form-group">
                     <label for="email">E-mail</label>
