@@ -22,11 +22,7 @@ Ecco il riepilogo del tuo ordine:
     @endforeach
 </ul>
 
-{{-- 
-<h3>{{$order->dishes}}</h3>
-The body of your message. --}}
-
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/'])
+@component('mail::button', ['url' => '/'])
 Vai sul Sito
 @endcomponent
 

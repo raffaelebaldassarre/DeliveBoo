@@ -4,10 +4,21 @@
 <div class="col-lg-12">
   <div id="app">
 
-    <div class="text-center">
-        <img class="card-img-top" src="{{asset('storage/' . $restaurant->image)}}" style=" width:80%; height: 40%;">
+    <div class="d-flex" style="max-height: 350px">
+      <div style="width:50%">
+        <img class="card-img-top" src="{{asset('storage/' . $restaurant->image)}}" style="height: 100% ; border-radius: 10px" id="img-rest">
+      </div>
+      <div style="width:50%" class="text-center align-self-center d-flex justify-content-end">
+        <div id="info-rest">
+          <h2>{{ $restaurant->name }}</h2>
+          <h5>{{ $restaurant->address }}</h5>
+          <h5>{{ $restaurant->phone_number }}</h5>
+        </div>
+      </div>
     </div>
-    <h1 class="margin-tb-30">I NOSTRI PIATTI</h1>
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <h1 class="margin-tb-30 text-center">I NOSTRI PIATTI</h1>
+    </div>
     <h3 id="rest_id" class="none">{{ $restaurant->id }}</h3>
     <div class="container">
       <div class="row">

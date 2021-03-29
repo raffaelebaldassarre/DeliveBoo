@@ -10,29 +10,6 @@
                 <ul>
                     <li v-for="(item, index) in orderCart">@{{item.quantity}}x @{{item.name}} &rArr; @{{item.totalDishPrice}} €</li>
                 </ul>
-                {{-- <table class="table">
-                    <thead>
-                        <tr>
-                            <th>                    
-                                Piatto
-                            </th>
-                            <th>Quantità</th>
-                            <th>Prezzo totale per piatto</th>
-                        </tr>
-                    </thead>
-                    <tbody v-for="(item, index) in orderCart">
-                        <tr>
-                            <td scope="row">@{{item.name}}</td>
-                            <td>@{{item.quantity}}</td>
-                            <td>@{{item.totalDishPrice}} €</td>
-                            <td>                            
-                                <button id="minus" class="btn btn-outline-primary" @click="minusDish(item)">-</button>
-                                <button id="plus" class="btn btn-outline-primary" @click="moreDish(item)">+</button>
-                                <button id="trash" @click="deleteDish(index)" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table> --}}
                 <h2 v-if="totalPrice != 0">Prezzo Totale: @{{totalPrice}} €</h2>
             </div>
         </div>
@@ -83,7 +60,16 @@
                 @error('phone_number')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-    
+
+                {{-- EMAIL --}}
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input class="form-control" type="email" name="email" id="email" value="{{old('email')}}">
+                </div>
+                @error('email')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
                 {{-- RICHIESTE SPECIALI --}}
                 <div class="form-group">
                     <label for="special_requests">RICHIESTE SPECIALI</label>
@@ -115,8 +101,9 @@
                         var name = document.getElementById("name").value;
                         var lastname = document.getElementById("lastname").value;
                         var phone_number = document.getElementById("phone_number").value;
+                        var email = document.getElementById("email").value;
                         var address = document.getElementById("address").value;
-                        if (name === '' || lastname === '' || phone_number === '' || address === '')
+                        if (name === '' || lastname === '' || phone_number === '' || email === '' || address === '')
                         {
                             alert("Inserisci tutti i dati richiesti per la spedizione");
                             return false;

@@ -35,7 +35,7 @@ class CartController extends Controller
             'lastname' => 'required',
             'address' => 'required',
             'phone_number' => 'required',
-            'payment_id' => 'nullable',
+            'email' => 'required',
             'restaurant_id' => 'required|exists:restaurants,id',
             'dishes' => 'exists:dishes,id',
             'exp_date' => '',
@@ -51,7 +51,7 @@ class CartController extends Controller
         }
 
 
-        $to = $new_order->name . $new_order->lastname . '@example.it';
+        $to = $new_order->email;
         Mail::to($to)->send(new Email);
 
         return redirect()->route('guests.success', compact('new_order'));
