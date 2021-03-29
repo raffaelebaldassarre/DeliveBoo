@@ -5,7 +5,7 @@
   height: 500px;
   margin-top: 91.23px;
   color: $arancio;
-  text-shadow: 2px 2px rgb(20, 19, 19);
+  text-shadow: 0 5px 10px rgb(0, 0, 0);
   padding: 8% 10%;
 
   h1{
@@ -33,6 +33,7 @@
     animation-duration: 2.5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
+    text-shadow: 0 5px 10px rgb(0, 0, 0);
   }
   p{
     width: fit-content;
@@ -45,6 +46,7 @@
     animation-duration: 3.5s;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
+    text-shadow: 0 5px 10px rgb(0, 0, 0);
   }
   @keyframes position {
     from {left: 70%; opacity: 0;}
@@ -68,6 +70,7 @@
       width: auto;
       font-size: 250%;
       animation: none;
+      text-shadow: 0 5px 10px rgb(0, 0, 0);
     }
     p {
       top: 70%;
@@ -75,6 +78,7 @@
       transform: translateX(-50%);
       font-size: 150%;
       animation: none;
+      text-shadow: 0 5px 10px rgb(0, 0, 0);
     }
   }
 }
