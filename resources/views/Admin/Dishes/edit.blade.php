@@ -59,7 +59,7 @@
 
         <br>
         {{-- AVAILABLE --}}
-        <div class="form-group">
+        <div class="form-group d-flex" id="available-dish">
             <label for="available">Available:</label>
             <input type="radio" class="form-control" id="available" name="available" value="1" {{$dish->available == 1 ? 'checked' : ''}}> <span>TRUE</span> 
             <input type="radio" class="form-control" id="available" name="available" value="0" {{$dish->available == 0 ? 'checked' : ''}}> <span>FALSE</span> 
