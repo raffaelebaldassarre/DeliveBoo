@@ -4,9 +4,7 @@
     <div class="admin_wrapper d-flex">
             @yield('sideMap')
             <main class="col-xs-12 col-md-9 col-lg-10" id="right_admin_content">
-                <div class="container">
                     @yield('content')
-                </div>
             </main>
     </div>
 

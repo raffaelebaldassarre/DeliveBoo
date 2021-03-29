@@ -2,8 +2,11 @@
 
 @section('content')
 
-    <h1>I MIEI RISTORANTI</h1>
-    <a name="" id="" class="btn btn-primary" href="{{route('admin.restaurants.create')}}" role="button">INSERISCI UN NUOVO RISTORANTE</a>
+    <div class="adm_rest_index_insert text-center">
+      <h1>I MIEI RISTORANTI</h1>
+      <a name="" id="" class="btn btn-primary" href="{{route('admin.restaurants.create')}}" role="button">INSERISCI UN NUOVO RISTORANTE</a>
+    </div>
+    
               
       <div class="adm_rest_container d-flex flex-wrap">
           @foreach ($restaurants as $restaurant)   
