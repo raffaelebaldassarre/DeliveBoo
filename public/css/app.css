@@ -11363,7 +11363,7 @@ label img {
 }
 
 .row {
-  margin-top: 2%;
+  /* margin-top: 2%; */
   color: #fc904a;
 }
 
@@ -11445,7 +11445,7 @@ p {
 }
 
 .admin_wrapper #right_admin_content {
-  width: 80%;
+  min-height: calc(100vh - 91.23px);
   margin: auto;
 }
 
@@ -11469,8 +11469,10 @@ p {
 }
 
 #show_rest_container {
+  min-height: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #show_rest_container #single_rest_show {
@@ -11542,6 +11544,7 @@ p {
 
 .just-con-bet {
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .img-cont {
@@ -11552,6 +11555,7 @@ p {
   max-height: 425px;
   border-radius: 15px;
   box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+  margin-bottom: 30px;
 }
 
 .margin-tb-30 {

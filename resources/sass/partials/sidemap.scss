@@ -2,7 +2,7 @@
     margin-top: 91.23px;
     
     #right_admin_content{
-        width: 80%;
+        min-height: calc(100vh - 91.23px);
         margin: auto;
     }
 
@@ -28,8 +28,10 @@
 
 
 #show_rest_container{
+    min-height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     #single_rest_show{
         width: fit-content;
