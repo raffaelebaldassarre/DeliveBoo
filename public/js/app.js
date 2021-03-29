@@ -50025,7 +50025,6 @@ $("#carousel-example").on("slide.bs.carousel", function (e) {
     var it = itemsPerSlide - (totalItems - idx);
 
     for (var i = 0; i < it; i++) {
-      // append slides to end
       if (e.direction == "left") {
         $(".carousel-item").eq(i).appendTo(".carousel-inner");
       } else {
@@ -50034,17 +50033,6 @@ $("#carousel-example").on("slide.bs.carousel", function (e) {
     }
   }
 });
-/* $(function () {
-
-  $(window).scroll(function () {
-  if ($(window).scrollTop() >= 650) {
-    $("#filippo").css('background','#221F20');
-  } else {
-    $("#filippo").css('background','blue');
-  }
-});
-
-}); */
 
 /***/ }),
 

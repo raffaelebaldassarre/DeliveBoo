@@ -11590,6 +11590,18 @@ p {
   height: 100%;
 }
 
+#img-rest {
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+}
+
+#info-rest {
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+  text-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+  border: 1px solid #fc904a;
+  border-radius: 10px;
+  width: 80%;
+}
+
 .txt-cnt {
   text-align: center;
 }
