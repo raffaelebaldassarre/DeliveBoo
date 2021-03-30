@@ -6,8 +6,18 @@
     height: 100%;
 }
 
-#img-rest {
-    box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+.img-rist {
+    width: 50%;
+    #img-rest {
+        box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+        height: 100%;
+        border-radius: 10px;
+    }
+}
+
+.info-rest-container {
+    width: 50%;
+    justify-content: end;
 }
 
 #info-rest {
@@ -23,6 +33,7 @@
 }
 .arancio {
     color: $arancio;
+    padding: 5px;
 }
 .title {
     font-size: 2rem;
@@ -39,7 +50,7 @@
     height: 30%;
 }
 .dish-card {
-    // max-height: 450px;
+    width: 45%;
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
     margin-bottom: 30px;
@@ -58,7 +69,6 @@
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
     color: $arancio;
-    z-index: 9999;
     background-color: white;
 }
 .single-item {
@@ -101,22 +111,38 @@
     right: 0;
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
     .single-item {
         #trash {
             font-size: 10px;
         }
     }
+    .just-con-bet {
+        width: 100%;
+        padding: 5px;
+    }
+    #cart {
+        width: 100%;
+    }
 }
 @media (max-width: 576px) {
-  .just-con-bet {
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0;
-    overflow-y: scroll;
-    height: 450px;
-    margin-bottom: 30px;
-
-
-  }
+    .img-rist {
+        width: 100%;
+    }
+    .info-rest-container {
+        width: 100%;
+        margin: 10px 0;
+        justify-content: center;
+    }
+    .dish-card {
+        width: 90%;
+    }
+    .just-con-bet {
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0;
+        overflow-y: scroll;
+        height: 450px;
+        margin-bottom: 30px;
+    }
 }
