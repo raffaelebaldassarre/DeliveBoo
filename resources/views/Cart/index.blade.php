@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="text-center col-lg-7">
+    <div class="text-center col-lg-7 magally">
         <div id="app">
             <div class="receipt_container bg-white">
                 <h3 id="rest_id" class="d-none">{{ $restaurant->id }}</h3>
@@ -28,7 +28,7 @@
 
 @section('payment')
 
-    <div class="col-lg-5">
+    <div class="col-lg-5 magally">
         <div class="receipt_container text-center bg-white">
             <h3 class="text-center py-3">Inserisci i tuoi dati per la consegna</h3>
             <form action="{{route('cart.store')}}" method="post" id="payment-order-user" name="payment-order-user" onsubmit="testform">

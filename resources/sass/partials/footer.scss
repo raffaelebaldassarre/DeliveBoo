@@ -15,10 +15,18 @@
         text-transform: capitalize;
         list-style-type: none;
         cursor: pointer;
+        a {
+            text-decoration: none;
+            color: $arancio;
+        }
     }
 
     li:hover {
         color: white;
+        a {
+            text-decoration: none;
+            color: white;
+        }
     }
     .logo i {
         transition-duration: 1s;
@@ -50,6 +58,18 @@
         .deliv {
             width: 200px;
             margin-top: 30px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .end-page {
+        .pulsanti {
+            display: flex;
+            justify-content: center;
+        }
+        .smart-center {
+            text-align: center;
         }
     }
 }

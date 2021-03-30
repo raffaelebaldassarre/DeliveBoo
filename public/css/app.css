@@ -10979,7 +10979,6 @@ nav .white {
   background-size: cover;
   width: 100%;
   height: 500px;
-  margin-top: 91.23px;
   color: #fc904a;
   text-shadow: 0 5px 10px black;
   padding: 8% 10%;
@@ -11346,11 +11345,11 @@ label.cat_label img {
   font-size: 2rem;
 }
 
-#magalli {
+.magally {
   margin-top: 91.23px;
 }
 
-#magalli h3 {
+.magally h3 {
   text-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
 }
 
@@ -11432,7 +11431,17 @@ p {
   cursor: pointer;
 }
 
+.end-page li a {
+  text-decoration: none;
+  color: #fc904a;
+}
+
 .end-page li:hover {
+  color: white;
+}
+
+.end-page li:hover a {
+  text-decoration: none;
   color: white;
 }
 
@@ -11467,6 +11476,17 @@ p {
   .end-page .deliv {
     width: 200px;
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .end-page .pulsanti {
+    display: flex;
+    justify-content: center;
+  }
+
+  .end-page .smart-center {
+    text-align: center;
   }
 }
 
@@ -11776,5 +11796,45 @@ p {
 
 .receipt_container #submit-button {
   margin: 2rem;
+}
+
+.support_card {
+  position: relative;
+  flex-basis: 20%;
+  margin: 1rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
+}
+
+.support_card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: black;
+  margin: 0;
+  border-radius: 15px;
+  background-color: #fc904a;
+  opacity: 0;
+  transition: all 1s linear;
+}
+
+.support_card .overlay h3 {
+  text-align: center;
+}
+
+.support_card .overlay i {
+  color: black;
+  font-size: 2rem;
+  margin: 0 0.5rem;
+}
+
+.support_card .overlay:hover {
+  opacity: 1;
+}
+
+.support_card .overlay i:hover {
+  transform: scale(1.5);
 }
 

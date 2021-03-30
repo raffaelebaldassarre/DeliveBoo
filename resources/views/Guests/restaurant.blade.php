@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-lg-12">
+<div class="col-lg-12 magally">
   <div id="app">
 
     <div class="d-flex" style="max-height: 350px">
