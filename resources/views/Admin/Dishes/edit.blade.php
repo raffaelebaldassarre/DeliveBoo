@@ -18,8 +18,8 @@
         </div>
     @endif
 
-    <h1>MODIFICA PIATTO</h1>
-    <form action="{{route('admin.dishes.update', ['dish' => $dish->id])}}" method="post" enctype="multipart/form-data">
+    <h1 class="mt-5">MODIFICA PIATTO</h1>
+    <form class="mb-5" action="{{route('admin.dishes.update', ['dish' => $dish->id])}}" method="post" enctype="multipart/form-data">
 
         @csrf
         @method('PUT')

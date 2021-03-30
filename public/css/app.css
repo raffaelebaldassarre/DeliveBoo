@@ -11521,6 +11521,10 @@ p {
   justify-content: space-between;
 }
 
+#adm-order-short {
+  display: none;
+}
+
 #available-dish {
   display: flex;
   align-items: center;
@@ -11548,12 +11552,34 @@ p {
   border-radius: 3%;
 }
 
+#show_rest_container #image-show-rest-admin {
+  height: 250px;
+}
+
 #show_rest_container #single_rest_show {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin-right: 0;
   text-align: center;
+}
+
+@media screen and (max-width: 680px) {
+  #sidemap {
+    display: none;
+  }
+
+  #adm-order-large {
+    display: none;
+  }
+
+  #adm-order-short {
+    display: block;
+  }
+
+  #show_rest_container #image-show-rest-admin {
+    height: 150px;
+  }
 }
 
 #success_container {

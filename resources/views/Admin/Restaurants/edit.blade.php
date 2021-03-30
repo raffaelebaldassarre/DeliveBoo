@@ -20,7 +20,7 @@
 
     <!-- Modal -->
     <!-- Button trigger modal -->
-    <a class="btn btn-danger" data-toggle="modal" data-target="#delete-{{ $restaurant->slug }}"
+    <a class="btn btn-danger mt-5 mb-3" data-toggle="modal" data-target="#delete-{{ $restaurant->slug }}"
         role="button">
         <i class="fas fa-trash-alt"></i>
         ELIMINA IL RISTORANTE
@@ -54,7 +54,7 @@
     </div>
 
     <h1>AGGIORNA I DATI DEL RISTORANTE</h1>
-    <form action="{{route('admin.restaurants.update', ['restaurant'=> $restaurant->slug])}}" method="post" enctype="multipart/form-data">
+    <form class="mb-5" action="{{route('admin.restaurants.update', ['restaurant'=> $restaurant->slug])}}" method="post" enctype="multipart/form-data">
 
         @csrf
 

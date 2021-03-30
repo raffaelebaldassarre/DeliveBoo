@@ -11,7 +11,7 @@
 <div id="show_rest_container" class="d-flex">
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-6 images text-center">
-            <img src="{{asset('storage/' . $restaurant->image)}}" alt="" style="height: 250px">
+            <img src="{{asset('storage/' . $restaurant->image)}}" alt="" id="image-show-rest-admin">
         </div>
     
         <div class="col-xs-12 col-md-12 col-lg-6" id="single_rest_show">
@@ -27,8 +27,8 @@
                 @endforeach
             </h3>
         
-            <a href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i></a>
-            <a href="{{route('admin.dishes.index', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i>Visualizza i piatti del tuo ristorante</a>
+            <a href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i>Modifica il tuo ristorante</a>
+            <a href="{{route('admin.dishes.index', ['slug' => $restaurant->slug])}}" class="btn btn-primary"><i class="fas fa-utensils fa-xs fa-fw"></i>Visualizza i piatti del tuo ristorante</a>
         </div>
     </div>
 
