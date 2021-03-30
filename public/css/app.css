@@ -11538,7 +11538,7 @@ p {
 
 .admin_wrapper .adm_rest_container .card-body .adm_rest_btn {
   padding-bottom: 1.25rem;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #adm-order-short {

@@ -19,13 +19,12 @@
                           <p class="text-center">{{ $restaurant->address }}</p>
                           <p class="text-center">{{ $restaurant->phone_number }}</p>
                         </h4>
-                        <div class="adm_rest_btn d-flex">
-                          <a href="{{route('admin.restaurants.show', ['restaurant' => $restaurant->slug])}}" class="btn btn-primary"><i class="fas fa-eye fa-xs fa-fw"></i></a>
-                          <a href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i></a>
-                          <a href="{{route('admin.dishes.index', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-utensils fa-xs fa-fw"></i></a>
-                          <a href="{{route('admin.orders.index', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-book fa-xs fa-fw"></i></a>
-                          <a href="{{route('admin.charts', ['slug' => $restaurant->slug])}}" class="btn btn-warning"><i class="fas fa-chart-line"></i></a>
-                          
+                        <div class="adm_rest_btn d-flex flex-wrap">
+                          <a id="btn-rest" href="{{route('admin.restaurants.show', ['restaurant' => $restaurant->slug])}}" class="btn btn-primary" style="padding: 5px; margin-right: 3px; margin-bottom: 5px"><i class="fas fa-eye fa-xs fa-fw"></i> INFO SUL RISTO</a>
+                          <a id="edit-rest" href="{{route('admin.restaurants.edit', ['restaurant' => $restaurant->slug])}}" class="btn btn-primary" style="padding: 5px; margin-bottom: 5px"><i class="fas fa-pencil-ruler fa-xs fa-fw"></i>MODIFICA RISTO</a>
+                          <a id="index-dish" href="{{route('admin.dishes.index', ['slug' => $restaurant->slug])}}" class="btn btn-primary" style="padding: 5px; margin-right: 3px; margin-bottom: 5px"><i class="fas fa-utensils fa-xs fa-fw"></i>VEDI IL MENU'</a>
+                          <a id="index-order" href="{{route('admin.orders.index', ['slug' => $restaurant->slug])}}" class="btn btn-primary" style="padding: 5px; margin-bottom: 5px"><i class="fas fa-book fa-xs fa-fw"></i>VEDI GLI ORDINI</a>
+                          <a id="show-chart" href="{{route('admin.charts', ['slug' => $restaurant->slug])}}" class="btn btn-primary text-center" style="padding: 5px; margin-bottom: 5px><i class="fas fa-chart-line"></i>VEDI LE STATISTICHE</a>
                         </div>
                       </div>
                     </div>
