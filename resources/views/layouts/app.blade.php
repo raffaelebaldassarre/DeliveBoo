@@ -2,7 +2,7 @@
 @include('layouts.guests.navbar')
 @yield('header')
 
-<main id="magalli" class="p-5">
+<main class="p-5">
     <div class="container">
         <div class="row">
             @yield('content')
