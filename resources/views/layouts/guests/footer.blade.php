@@ -26,7 +26,7 @@
             <li>offerte di lavoro</li>
             <li>diventa contributor</li>
             <li>contatti</li>
-            <li>supporto</li>
+            <li><a href="{{route('guests.support')}}">supporto</a></li>
             <li>800 928 335</li>
           </ul>
 

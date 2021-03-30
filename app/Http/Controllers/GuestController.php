@@ -20,4 +20,9 @@ class GuestController extends Controller
         $dishes = $restaurant->dishes;
         return view('guests.restaurant', compact('dishes', 'restaurant'));
     }
+
+    public function support()
+    {
+        return view('guests.support');
+    }
 }

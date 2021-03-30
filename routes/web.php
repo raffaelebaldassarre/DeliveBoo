@@ -19,6 +19,8 @@ Route::get('{slug}/cart', 'CartController@index')->name('cart.index');
 Route::post('cart/store', 'CartController@store')->name('cart.store');
 Route::get('success', 'CartController@success')->name('guests.success');
 Route::get('/payment/process', 'PaymentsController@process')->name('payment.process');
+Route::get('/support', 'GuestController@support')->name('guests.support');
+
 
 Auth::routes();
 
