@@ -9,7 +9,7 @@
             <div class="flip_card">
                 <div class="flip_card_inner">
                     <div class="flip_card_front">
-                        <img src="{{asset('images/woman.webp')}}" alt="" class="w-100 h-100">
+                        <img src="{{asset('images/Mariapia.jpg')}}" alt="" class="w-100 h-100">
                     </div>
                     <div class="flip_card_back d-flex flex-column justify-content-center align-items-center">
                         <h3>Mariapia Gianguzzi</h3>
@@ -23,7 +23,7 @@
             <div class="flip_card">
                 <div class="flip_card_inner">
                     <div class="flip_card_front">
-                        <img src="{{asset('images/woman.webp')}}" alt="" class="w-100 h-100">
+                        <img src="{{asset('images/RaffaeleBaldassarre.jpg')}}" alt="" class="w-100 h-100">
                     </div>
     
                     <div class="flip_card_back d-flex flex-column justify-content-center align-items-center">
@@ -38,7 +38,7 @@
             <div class="flip_card">
                 <div class="flip_card_inner">
                     <div class="flip_card_front">
-                        <img src="{{asset('images/woman.webp')}}" alt="" class="w-100 h-100">
+                        <img src="{{asset('images/AlessandroMarzuco.jpg')}}" alt="" class="w-100 h-100">
                     </div>
     
                     <div class="flip_card_back d-flex flex-column justify-content-center align-items-center">
@@ -68,7 +68,7 @@
             <div class="flip_card">
                 <div class="flip_card_inner">
                     <div class="flip_card_front">
-                        <img src="{{asset('images/woman.webp')}}" alt="" class="w-100 h-100">
+                        <img src="{{asset('images/LorisMatteri.jpg')}}" alt="" class="w-100 h-100">
                     </div>
     
                     <div class="flip_card_back d-flex flex-column justify-content-center align-items-center">
