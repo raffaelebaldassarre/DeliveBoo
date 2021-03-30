@@ -20,7 +20,7 @@
                         <th>Cognome Cliente</th>
                         <th>Indirizzo</th>
                         <th>Numero Telefono</th>
-                        <th>Metodo di Pagamento</th>
+                        <th>E-Mail</th>
                         <th>Orario Ordine</th>
                         <th>Actions</th>
                     </tr>
@@ -35,7 +35,7 @@
                         <td>{{ $order->lastname }}</td>
                         <td>{{ $order->address }}</td>
                         <td>{{ $order->phone_number }}</td>
-                        <td>{{ $order->payment_id }}</td>
+                        <td>{{ $order->email}}</td>
                         <td>{{ $order->created_at }}</td>
 
 
