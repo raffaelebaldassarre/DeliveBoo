@@ -11405,6 +11405,12 @@ p {
   text-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
 }
 
+@media (max-width: 768px) {
+  p {
+    font-size: 100%;
+  }
+}
+
 .end-page {
   text-shadow: 2px 2px #141313;
   filter: contrast(95%);
@@ -11449,12 +11455,19 @@ p {
 }
 
 .end-page .deliv {
-  width: 161px;
-  margin-top: 50px;
+  width: 300px;
+  margin-top: 30px;
 }
 
 .mrg-20 {
   margin-top: 40px;
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .end-page .deliv {
+    width: 200px;
+    margin-top: 30px;
+  }
 }
 
 .admin_wrapper {

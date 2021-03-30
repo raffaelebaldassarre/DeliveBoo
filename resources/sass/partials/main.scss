@@ -1,47 +1,47 @@
 #magalli {
     margin-top: 91.23px;
 
-    h3{
+    h3 {
         text-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
     }
 }
 
-.card-fix{
-    max-height: 350px; 
+.card-fix {
+    max-height: 350px;
 }
 
-.relative{
+.relative {
     transition-duration: 1s;
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
-    
-    img{
+
+    img {
         width: 100%;
         height: 80%;
         border-radius: 15px 15px 0 0;
     }
 }
 
-.relative:hover{
+.relative:hover {
     transform: scale(1.05);
 }
 
-.relative:hover img{
-    filter: grayscale(.6);
+.relative:hover img {
+    filter: grayscale(0.6);
 }
 
-.row{
+.row {
     color: $arancio;
 }
 
-p{
+p {
     color: $arancio;
     text-align: center;
     font-size: 140%;
     text-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
 }
 
-.ristoranti{
+.ristoranti {
     text-align: center;
     color: $arancio;
     text-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
@@ -49,15 +49,15 @@ p{
     a:hover {
         text-decoration: none;
     }
-    h3{
+    h3 {
         margin: 50px;
         display: none;
         text-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
     }
 }
 
-
-
-
-
-
+@media (max-width: 768px) {
+    p {
+        font-size: 100%;
+    }
+}

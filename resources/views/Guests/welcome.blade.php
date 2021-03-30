@@ -17,7 +17,7 @@
                   <div class="container-fluid">
                       <div id="carousel-example" class="carousel slide" data-ride="carousel">
                           <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                              <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3" :class="index==0 ? 'active' : '' " v-for="(category, index) in categories">
+                              <div class="carousel-item col-12 col-sm-4 col-md-4 col-lg-3" :class="index==0 ? 'active' : '' " v-for="(category, index) in categories">
                                   <input class="form-check-input d-none" type="checkbox" :value="category.id" :id="'category'+index" v-model="categories_rest">
                                   <label class="form-check-label cat_label" :for="'category' + index">
                                       <img :src="`images/categories_foto/${category.name}.jpg`" class="img-fluid mx-auto d-block" alt="img1">
