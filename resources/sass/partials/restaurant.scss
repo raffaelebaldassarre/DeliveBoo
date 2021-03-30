@@ -32,13 +32,14 @@
     flex-wrap: wrap;
     padding: 0 60px;
     overflow-y: scroll;
-    height: 425px;
+    height: 450px;
+    margin-bottom: 30px;
 }
 .img-cont {
     height: 30%;
 }
 .dish-card {
-    max-height: 425px;
+    max-height: 450px;
     border-radius: 15px;
     box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
     margin-bottom: 30px;
@@ -66,30 +67,47 @@
         text-decoration: none;
     }
     .quantity {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 1rem;
     }
     .delete {
         margin-left: 10px;
     }
     #minus,
     #plus {
-        background-color: $arancio;
-        border-radius: 50%;
-        border: 1px solid black;
-        padding: 5px 12px;
-        color: black;
+
+        border: 2px solid $arancio;
         cursor: pointer;
+        color: $arancio;
     }
+    #trash {
+        background-color: white;
+        color: red;
+        border: 2px solid red;
+        margin-left: 10px;
+    }
+    #trash:hover {
+      background-color: red;
+      color: white;
+    }
+    #minus:hover,
+    #plus:hover, {
+      background-color: $arancio;
+      color: white;
+    }
+
 }
 .cart-pos {
     top: 40%;
     right: 0;
 }
 
-@media screen and (max-width: 991px) and (min-width: 769px) {
-    .quantity {
-        padding-left: 5px;
-        padding-right: 5px;
+@media (min-width: 768px) and (max-width: 991px) {
+  .single-item{
+    #trash {
+      font-size: 10px;
     }
+  }
+
 }

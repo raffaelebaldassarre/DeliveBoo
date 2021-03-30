@@ -13,6 +13,12 @@
           <h2>{{ $restaurant->name }}</h2>
           <h5>{{ $restaurant->address }}</h5>
           <h5>{{ $restaurant->phone_number }}</h5>
+          <h5> Categorie: </h5>
+          <h6>
+            @foreach ($restaurant->categories as $category)
+                 {{$category->name}},
+            @endforeach
+        </h6>
         </div>
       </div>
     </div>
@@ -22,7 +28,7 @@
     <h3 id="rest_id" class="none">{{ $restaurant->id }}</h3>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-12 d-flex just-con-bet">
+        <div class="col-lg-8 col-md-7 col-sm-12 d-flex just-con-bet">
           @foreach ($dishes as $dish)
           <div class="dish-card" style="width: 18rem;">
             <div class="img-cont">
@@ -39,15 +45,18 @@
           @endforeach
         </div>
 
-        <div id="cart" class="col-lg-4 col-md-4 col-sm-12 cart-pos">
+        <div id="cart" class="col-lg-4 col-md-5 col-sm-offset-2 col-sm-8 cart-pos">
           <div  class="cart">
             <h3>Il tuo carrello</h3>
             <div class="single-item" v-for="(item, index) in orderCart">
               <p>Piatto: @{{item.name}}</p>
-              <button id="minus" @click="minusDish(item)">-</button>
-              <span class="quantity">Quantità: @{{item.quantity}}</span>
-              <button id="plus"  @click="moreDish(item)">+</button>
-              <button id="trash" @click="deleteDish(index)" class="btn-danger delete"><i class="fas fa-trash-alt"></i></button>
+              <div class="">
+                <button id="minus" class="btn btn-outline" @click="minusDish(item)"><i class="fas fa-minus"></i></button>
+                <span class="quantity">Quantità: @{{item.quantity}}</span>
+                <button id="plus"  class="btn btn-outline" @click="moreDish(item)"><i class="fas fa-plus"></i></button>
+              </div>
+              <button id="trash" class="btn btn-outline" @click="deleteDish(index)" class="btn-danger delete"><i class="fas fa-trash-alt"></i></button>
+
               <p>Totale piatto: @{{item.totalDishPrice}} €</p>
               <hr>
             </div>
