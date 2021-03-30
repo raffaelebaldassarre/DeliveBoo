@@ -7,18 +7,21 @@
             <div class="receipt_container bg-white">
                 <h3 id="rest_id" class="d-none">{{ $restaurant->id }}</h3>
                 <h2>Riepilogo Ordine:</h2>
-                <table class="table">
-                    <tbody>
-                        <tr v-for="(item, index) in orderCart">
-                            <td class="align-middle">@{{item.quantity}}x @{{item.name}} &rArr; @{{item.totalDishPrice}} €</td>
-                            <td class="d-flex justify-content-around">                            
+                <div class="table">
+                    <div class="d-flex justify-content-around">                            
+                        <div v-for="(item, index) in orderCart">
+                            <div class="d-flex">
                                 <button id="minus" class="btn btn-outline" @click="minusDish(item)"><i class="fas fa-minus"></i></button>
+                                <div id="food-check">@{{item.quantity}}x @{{item.name}} &rArr; @{{item.totalDishPrice}} €</div>
                                 <button id="plus" class="btn btn-outline" @click="moreDish(item)"><i class="fas fa-plus"></i></button>
-                                <button id="trash" class="btn btn-outline" @click="deleteDish(index)" class="btn-danger delete"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </div>
+                            <div>
+                                <button id="trash" class="btn btn-outline"
+                                @click="deleteDish(index)" class="btn-danger delete"><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                 <h2 v-if="totalPrice != 0">Prezzo Totale: @{{totalPrice}} €</h2>
             </div>

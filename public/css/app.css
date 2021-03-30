@@ -11690,7 +11690,8 @@ p {
   flex-wrap: wrap;
   padding: 0 60px;
   overflow-y: scroll;
-  height: 425px;
+  height: 450px;
+  margin-bottom: 30px;
 }
 
 .img-cont {
@@ -11698,7 +11699,7 @@ p {
 }
 
 .dish-card {
-  max-height: 425px;
+  max-height: 450px;
   border-radius: 15px;
   box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
   margin-bottom: 30px;
@@ -11733,8 +11734,9 @@ p {
 }
 
 .single-item .quantity {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 1rem;
 }
 
 .single-item .delete {
@@ -11743,12 +11745,27 @@ p {
 
 .single-item #minus,
 .single-item #plus {
-  background-color: #fc904a;
-  border-radius: 50%;
-  border: 1px solid black;
-  padding: 5px 12px;
-  color: black;
+  border: 2px solid #fc904a;
   cursor: pointer;
+  color: #fc904a;
+}
+
+.single-item #trash {
+  background-color: white;
+  color: red;
+  border: 2px solid red;
+  margin-left: 10px;
+}
+
+.single-item #trash:hover {
+  background-color: red;
+  color: white;
+}
+
+.single-item #minus:hover,
+.single-item #plus:hover {
+  background-color: #fc904a;
+  color: white;
 }
 
 .cart-pos {
@@ -11756,10 +11773,9 @@ p {
   right: 0;
 }
 
-@media screen and (max-width: 991px) and (min-width: 769px) {
-  .quantity {
-    padding-left: 5px;
-    padding-right: 5px;
+@media (min-width: 768px) and (max-width: 991px) {
+  .single-item #trash {
+    font-size: 10px;
   }
 }
 
@@ -11781,6 +11797,10 @@ p {
 
 .receipt_container label {
   border: 0;
+}
+
+.receipt_container #food-check {
+  padding: 0 5px;
 }
 
 .receipt_container #trash {
@@ -11810,6 +11830,12 @@ p {
 
 .receipt_container #submit-button {
   margin: 2rem;
+}
+
+@media (max-width: 576px) {
+  .receipt_container {
+    margin: 0;
+  }
 }
 
 .support_card {
