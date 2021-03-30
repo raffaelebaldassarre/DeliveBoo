@@ -46,6 +46,11 @@
 
       </div>
 
+      <div id="credits" class="text-center p-2">
+        <p style="font-size: 85%;">Made with <i class="fa fa-heart px-1" aria-hidden="true"></i> and a lot of blasphemies by Team4 - Boolean#23 <i class="fa fa-copyright px-1" aria-hidden="true"></i> 2021 </p>
+        <small>Keep calm, and enjoy Magally</small>
+      </div>
+
     </div>
   </div>
 </footer>
