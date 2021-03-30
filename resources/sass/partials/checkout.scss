@@ -3,7 +3,7 @@
     border-radius: 10px;
     margin: 2rem;
     padding: 2rem;
-    box-shadow: 0  5px 10px rgba(10, 6, 1, 0.2);
+    box-shadow: 0 5px 10px rgba(10, 6, 1, 0.2);
     h2 {
         font-size: 2rem;
     }
@@ -12,6 +12,9 @@
     }
     label {
         border: 0;
+    }
+    #food-check {
+        padding: 0 5px;
     }
     #trash {
         background-color: white;
@@ -29,7 +32,7 @@
         color: $arancio;
     }
     #minus:hover,
-    #plus:hover, 
+    #plus:hover,
     #submit-button:hover {
         background-color: $arancio;
         color: white;
@@ -37,5 +40,11 @@
 
     #submit-button {
         margin: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .receipt_container {
+        margin: 0;
     }
 }

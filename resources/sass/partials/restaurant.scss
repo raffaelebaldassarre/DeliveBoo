@@ -76,7 +76,6 @@
     }
     #minus,
     #plus {
-
         border: 2px solid $arancio;
         cursor: pointer;
         color: $arancio;
@@ -88,15 +87,14 @@
         margin-left: 10px;
     }
     #trash:hover {
-      background-color: red;
-      color: white;
+        background-color: red;
+        color: white;
     }
     #minus:hover,
-    #plus:hover, {
-      background-color: $arancio;
-      color: white;
+    #plus:hover {
+        background-color: $arancio;
+        color: white;
     }
-
 }
 .cart-pos {
     top: 40%;
@@ -104,10 +102,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .single-item{
-    #trash {
-      font-size: 10px;
+    .single-item {
+        #trash {
+            font-size: 10px;
+        }
     }
-  }
-
 }
