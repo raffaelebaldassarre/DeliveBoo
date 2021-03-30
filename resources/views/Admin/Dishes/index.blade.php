@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-        <h1>I MIEI PIATTI</h1>
+        <h1 class="mt-5">I MIEI PIATTI</h1>
         <a name="" id="" class="btn btn-primary" href="{{route('admin.dishes.create', ['slug' => $restaurant->slug])}}" role="button">INSERISCI UN NUOVO PIATTO</a>
         <table class="table">
             <thead>

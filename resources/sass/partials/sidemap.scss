@@ -47,6 +47,9 @@
     }
 }
 
+#adm-order-short{
+    display: none;
+}
 
 #available-dish{
     display: flex;
@@ -70,6 +73,10 @@
     padding-bottom: 3%;
     border-radius: 3%;
 
+    #image-show-rest-admin{
+        height: 250px;
+    }
+
     #single_rest_show{
         width: fit-content;
         margin-right: 0;
@@ -77,4 +84,24 @@
     }
 }
 
+@media screen and (max-width: 680px) {
+    #sidemap {
+      display: none;
+    }
+
+    #adm-order-large{
+        display: none;
+    }
+
+    #adm-order-short{
+        display: block;
+    }
+
+    #show_rest_container{
+        #image-show-rest-admin{
+            height: 150px;
+        }
+    }
+    
+  }
 

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="adm_rest_index_insert text-center mt-4">
-      <h1>I MIEI RISTORANTI</h1>
+      <h1 class="mt-5">I MIEI RISTORANTI</h1>
       <a name="" id="" class="btn btn-primary" href="{{route('admin.restaurants.create')}}" role="button">INSERISCI UN NUOVO RISTORANTE</a>
     </div>
     

@@ -18,8 +18,8 @@
         </div>
     @endif
 
-    <h1>INSERISCI UN PIATTO</h1>
-    <form action="{{route('admin.dishes.store', ['id' => $restaurant->id])}}" method="post" enctype="multipart/form-data">
+    <h1 class="mt-5">INSERISCI UN PIATTO</h1>
+    <form class="mb-5" action="{{route('admin.dishes.store', ['id' => $restaurant->id])}}" method="post" enctype="multipart/form-data">
 
         @csrf
 
