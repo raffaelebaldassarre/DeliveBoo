@@ -28,7 +28,7 @@
     <h3 id="rest_id" class="none">{{ $restaurant->id }}</h3>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-7 col-sm-12 d-flex just-con-bet">
+        <div class="col-lg-8 col-md-7 col-sm-12 d-flex just-con-bet ">
           @foreach ($dishes as $dish)
           <div class="dish-card" style="width: 18rem;">
             <div class="img-cont">
