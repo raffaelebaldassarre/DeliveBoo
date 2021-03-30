@@ -53,7 +53,7 @@
             <div class="flip_card">
                 <div class="flip_card_inner">
                     <div class="flip_card_front">
-                        <img src="{{asset('images/woman.webp')}}" alt="" class="w-100 h-100">
+                        <img src="{{asset('images/WilliamTruppi.png')}}" alt="" class="w-100 h-100">
                     </div>
     
                     <div class="flip_card_back d-flex flex-column justify-content-center align-items-center">
