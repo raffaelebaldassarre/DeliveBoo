@@ -20,6 +20,14 @@
             color: $arancio;
         }
     }
+    a {
+        text-decoration: none;
+        color: $arancio;
+    }
+    a:hover {
+        text-decoration: none;
+        color: white;
+    }
 
     li:hover {
         color: white;
