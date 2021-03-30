@@ -11557,6 +11557,10 @@ p {
   margin: 0 20px;
 }
 
+#dishes-table-adm-short {
+  display: none;
+}
+
 #show_rest_container {
   margin-top: 5%;
   margin-bottom: 5%;
@@ -11599,6 +11603,16 @@ p {
 
   #show_rest_container #image-show-rest-admin {
     height: 150px;
+  }
+}
+
+@media screen and (max-width: 1017px) {
+  #dishes-table-adm-large {
+    display: none;
+  }
+
+  #dishes-table-adm-short {
+    display: block;
   }
 }
 
