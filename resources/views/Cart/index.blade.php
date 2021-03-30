@@ -6,16 +6,16 @@
         <div id="app">
             <div class="receipt_container bg-white">
                 <h3 id="rest_id" class="d-none">{{ $restaurant->id }}</h3>
-                <h2>Riepilogo Ordine:</h2>
-                <div class="table">
-                    <div class="d-flex justify-content-around">                            
+                <h2 class="py-2">Riepilogo Ordine:</h2>
+                <div>
+                    <div class="d-flex flex-column justify-content-center">                            
                         <div v-for="(item, index) in orderCart">
-                            <div class="d-flex">
+                            <div class="d-flex justify-content-center align-items-center my-1">
                                 <button id="minus" class="btn btn-outline" @click="minusDish(item)"><i class="fas fa-minus"></i></button>
                                 <div id="food-check">@{{item.quantity}}x @{{item.name}} &rArr; @{{item.totalDishPrice}} €</div>
                                 <button id="plus" class="btn btn-outline" @click="moreDish(item)"><i class="fas fa-plus"></i></button>
                             </div>
-                            <div>
+                            <div class="d-flex justify-content-center my-2">
                                 <button id="trash" class="btn btn-outline"
                                 @click="deleteDish(index)" class="btn-danger delete"><i class="fas fa-trash-alt"></i></button>
                             </div>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 
-                <h2 v-if="totalPrice != 0">Prezzo Totale: @{{totalPrice}} €</h2>
+                <h2 class="py-2" v-if="totalPrice != 0">Prezzo Totale: @{{totalPrice}} €</h2>
             </div>
         </div>
     </div>
