@@ -33,9 +33,9 @@
         </div>
         <div class="col-lg-3 col-md-3 mrg-20 smart-center">
           <div class="logo mrg-bt-50">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-instagram"></i>
+            <a href="https://www.facebook.com/giancarlo.magalli.5" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/gmagalli" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/magallinobellino/" target="_blank"><i class="fab fa-instagram"></i></a>
           </div>
           <div class="pulsanti smart-center">
             <img src="{{asset('images/apple.png')}}" alt="">
