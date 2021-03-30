@@ -13,7 +13,7 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 20; $i++) { 
+        for ($i=0; $i < 80; $i++) { 
             $newOrder = new Order();
             $newOrder->special_requests = $faker->sentence(5);
             $newOrder->exp_date = $faker->dateTimeInInterval($startDate = 'now', $endDate = '+ 1 hour');
@@ -21,6 +21,8 @@ class OrderSeeder extends Seeder
             $newOrder->lastname = $faker->lastName();
             $newOrder->address = $faker->address();
             $newOrder->phone_number = $faker->phoneNumber();
+            $newOrder->created_at = $faker->dateTimeInInterval($startDate = '-3 month', $endDate = '+2 month');
+            $newOrder->updated_at = $newOrder->created_at;
             $newOrder->save();
         }
 
