@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +33,9 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
     Route::post('restaurants/dishes', 'DishController@store')->name('dishes.store');
     Route::get('restaurants/{slug}/dishes/{dish}', 'DishController@show')->name('dishes.show');
     Route::get('restaurants/{slug}/dishes/{dish}/edit', 'DishController@edit')->name('dishes.edit');
-    Route::put('restaurants/dishes/{dish}', 'DishController@update')->name('dishes.update');
     Route::patch('restaurants/dishes/{dish}', 'DishController@update')->name('dishes.update');
     Route::delete('restaurants/dishes/{dish}', 'DishController@destroy')->name('dishes.destroy');
-
     Route::get('restaurants/{slug}/orders', 'OrderController@index')->name('orders.index');
     Route::get('restaurants/{slug}/orders/{order}', 'OrderController@show')->name('orders.show');
-
     Route::get('restaurants/{slug}/charts', 'ChartsController@index')->name('charts');;
 });
