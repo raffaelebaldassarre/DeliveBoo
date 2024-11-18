@@ -22,7 +22,7 @@ class RestaurantController extends Controller
         $user = Auth::user();
         $restaurants = $user->restaurants;
 
-        return view("admin.restaurants.index", compact("restaurants"));
+        return view("Admin.restaurants.index", compact("restaurants"));
     }
 
     /**
@@ -33,7 +33,7 @@ class RestaurantController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("admin.restaurants.create", compact("categories"));
+        return view("Admin.restaurants.create", compact("categories"));
     }
 
     /**
@@ -96,7 +96,7 @@ class RestaurantController extends Controller
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
-            return view("admin.restaurants.show", compact("restaurant"));
+            return view("Admin.restaurants.show", compact("restaurant"));
         }
         
     }
@@ -114,7 +114,7 @@ class RestaurantController extends Controller
             return redirect("/");
         } else {
             $categories = Category::all();
-            return view("admin.restaurants.edit", compact("categories", "restaurant"));
+            return view("Admin.restaurants.edit", compact("categories", "restaurant"));
         }
     }
 

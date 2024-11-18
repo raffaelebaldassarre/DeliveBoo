@@ -28,7 +28,7 @@ class DishController extends Controller
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
-            return view("admin.dishes.index", compact("dishes", "restaurant"));
+            return view("Admin.dishes.index", compact("dishes", "restaurant"));
         }
         /* dd($restaurant->dishes); */
     }
@@ -43,7 +43,7 @@ class DishController extends Controller
         /* dd($request); */
         $restaurant = Restaurant::where('slug', $request->slug)->first();
 
-        return view("admin.dishes.create", compact('restaurant'));
+        return view("Admin.dishes.create", compact('restaurant'));
     }
 
     /**
@@ -110,7 +110,7 @@ class DishController extends Controller
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
-            return view("admin.dishes.show", compact("dish", "restaurant"));
+            return view("Admin.dishes.show", compact("dish", "restaurant"));
         }
     }
 
@@ -128,7 +128,7 @@ class DishController extends Controller
         if ($user !== $restaurant->user_id) {
             return redirect("/");
         } else {
-            return view("admin.dishes.edit", compact("dish", "restaurant"));
+            return view("Admin.dishes.edit", compact("dish", "restaurant"));
         }
     }
 

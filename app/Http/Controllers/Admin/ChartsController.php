@@ -31,6 +31,6 @@ class ChartsController extends Controller
             array_shift($datas);
         }
 
-        return view('admin.restaurants.charts', compact('datas'));
+        return view('Admin.restaurants.charts', compact('datas'));
     }
 }

@@ -11,18 +11,18 @@ class GuestController extends Controller
     {
         $categories = Category::all();
         $restaurants = Restaurant::all();
-        return view('guests.welcome', compact('categories', 'restaurants'));
+        return view('Guests.welcome', compact('categories', 'restaurants'));
     }
 
     public function restaurant(Request $request)
     {
         $restaurant = Restaurant::where('slug', $request->slug)->first();
         $dishes = $restaurant->dishes;
-        return view('guests.restaurant', compact('dishes', 'restaurant'));
+        return view('Guests.restaurant', compact('dishes', 'restaurant'));
     }
 
     public function support()
     {
-        return view('guests.support');
+        return view('Guests.support');
     }
 }

@@ -13,7 +13,7 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $restaurant = Restaurant::where('slug', $request->slug)->first();
-        return view('cart.index', compact('restaurant'));
+        return view('Cart.index', compact('restaurant'));
     }
 
     public function store(Request $request, Faker $faker){
@@ -60,6 +60,6 @@ class CartController extends Controller
     public function success(Order $order)
     {
         $order = Order::orderBy("id", "desc")->first();
-        return view('guests.success', compact('order'));
+        return view('Guests.success', compact('order'));
     }
 }

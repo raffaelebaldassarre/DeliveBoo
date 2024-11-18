@@ -26,7 +26,7 @@ class OrderController extends Controller
       if ($user !== $restaurant->user_id) {
           return redirect("/");
       } else {
-        return view("admin.orders.index", compact("orders", "restaurant"));
+        return view("Admin.orders.index", compact("orders", "restaurant"));
       }
 
     }
@@ -67,7 +67,7 @@ class OrderController extends Controller
       if ($user !== $restaurant->user_id) {
           return redirect("/");
       } else {
-        return view("admin.orders.show", compact('order', 'restaurant', 'dishes'));
+        return view("Admin.orders.show", compact('order', 'restaurant', 'dishes'));
       }
     }
 
