@@ -22,7 +22,7 @@
     <form class="mb-5" action="{{route('admin.dishes.update', ['dish' => $dish->id])}}" method="post" enctype="multipart/form-data">
 
         @csrf
-        @method('PUT')
+        @method('PATCH')
         {{-- NAME --}}
         <div class="form-group">
             <label for="name">NOME PIATTO</label>

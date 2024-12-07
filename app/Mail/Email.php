@@ -30,6 +30,6 @@ class Email extends Mailable
     public function build()
     {
         $order = Order::orderBy("id", "desc")->first();
-        return $this->from('noreply@' . $order->restaurant->slug . '.deliveboo.magally')->markdown('mail.orderConfirmed', compact('order'));
+        return $this->from(env('MAIL_FROM_ADDRESS'))->markdown('mail.orderConfirmed', compact('order'));
     }
 }

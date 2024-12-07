@@ -105,9 +105,10 @@
                     
                     var form = document.getElementById('payment-order-user');
                     /* var button = document.querySelector('#submit-button'); */
+                    var braintreeToken = "{{ $braintreeToken }}";                    
                 
                     braintree.dropin.create({
-                        authorization: "sandbox_zjph3bx7_x2h6cngzkjxbdss9",
+                        authorization: braintreeToken,
                         container: '#dropin-container'
                     }, function (createErr, instance) {
                         form.addEventListener('submit', function () {

@@ -13,7 +13,8 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $restaurant = Restaurant::where('slug', $request->slug)->first();
-        return view('Cart.index', compact('restaurant'));
+        $braintreeToken = env('BRAINTREE_TOKEN');
+        return view('Cart.index', compact('restaurant','braintreeToken'));
     }
 
     public function store(Request $request, Faker $faker){
