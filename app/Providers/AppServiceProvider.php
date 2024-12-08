@@ -23,9 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \Braintree\Configuration::environment(env('BRAINTREE_ENV'));
-        \Braintree\Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
-        \Braintree\Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
-        \Braintree\Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
+        Configuration::environment(env('BRAINTREE_ENV'));
+        Configuration::merchantId(env('BRAINTREE_MERCHANT_ID'));
+        Configuration::publicKey(env('BRAINTREE_PUBLIC_KEY'));
+        Configuration::privateKey(env('BRAINTREE_PRIVATE_KEY'));
     }
 }

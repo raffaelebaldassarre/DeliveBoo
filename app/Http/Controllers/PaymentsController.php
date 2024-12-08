@@ -1,11 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Braintree;
 use App\Dish;
 use Braintree\Transaction;
-use Illuminate\Support\Env;
-use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
@@ -16,15 +13,19 @@ class PaymentsController extends Controller
         $totalOrder = 0;
         $cookieCart = json_decode($_COOKIE["cookieCart"]);
         foreach ($cookieCart as $cookie) {
-            $dishid = $cookie->id;
-            $dish = Dish::where('id', $dishid)->first();
-            $totalOrder += $dish->price * $cookie->quantity;
+            $dishId = $cookie->id;
+            $dish = Dish::find($dishId);
+            if ($dish) {
+                $totalOrder += $dish->price * $cookie->quantity;
+            } else {
+                throw new \Exception("Il piatto con ID $dishId non esiste.");
+            }
         }
 
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
 
-        $status = Braintree\Transaction::sale([
+        $status = Transaction::sale([
         'amount' => $totalOrder,
         'paymentMethodNonce' => $nonce,
         'options' => [
