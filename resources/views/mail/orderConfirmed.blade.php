@@ -1,7 +1,7 @@
 @component('mail::message')
 Ciao, <h3>{{$order->name}} {{$order->lastname}}</h3>
 
-<strong> Il tuo ordine è stato confermato!! </strong> 
+<strong> 🎉 Il tuo ordine è stato confermato 🎉 </strong> 
 
 <div style="text-align: center">
     <img src="{{asset('storage/' . $order->restaurant->image)}}" alt="" style="height: 100px; border-radius: 20%">
@@ -13,7 +13,7 @@ Ciao, <h3>{{$order->name}} {{$order->lastname}}</h3>
 
 L'indirizzo di consegna indicato è: <strong>{{$order->address}}</strong>
 
-L'orario di consegna previsto è alle {{$order->exp_date}}
+L'orario di consegna previsto è alle {{ $expDate }}
 
 Ecco il riepilogo del tuo ordine:
 <ul>
@@ -22,10 +22,12 @@ Ecco il riepilogo del tuo ordine:
     @endforeach
 </ul>
 
-@component('mail::button', ['url' => '/'])
+Totale: {{ $totalPrice }} €
+
+@component('mail::button', ['url' => env('APP_URL')])
 Vai sul Sito
 @endcomponent
 
 Grazie per averci scelto,<br>
-Team4 - {{ config('app.name') }}
+{{ config('app.name') }}
 @endcomponent

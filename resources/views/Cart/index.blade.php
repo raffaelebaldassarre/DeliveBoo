@@ -35,9 +35,7 @@
     <div class="col-lg-5 magally">
         <div class="receipt_container text-center bg-white">
             <h3 class="text-center py-3">Inserisci i tuoi dati per la consegna</h3>
-            <form action="{{ route('cart.store') }}" method="post" id="payment-order-user" name="payment-order-user"
-                onsubmit="testform">
-
+            <form action="{{ route('cart.store') }}" method="post" id="payment-order-user" name="payment-order-user">
                 @csrf
 
                 {{-- NOME --}}
@@ -105,13 +103,11 @@
                         pagamento</button>
                 </div>
 
-
                 <script>
                     var form = document.getElementById('payment-order-user');
-                    var braintreeToken = "{{ $braintreeToken }}";
-
+                    var clientToken = "{{ $clientToken }}";
                     braintree.dropin.create({
-                        authorization: braintreeToken,
+                        authorization: clientToken,
                         container: '#dropin-container',
                         locale: 'it_IT',
                         vaultManager: true,
@@ -142,14 +138,14 @@
                                         form.submit();
                                     } else {
                                         alert(
-                                            'Pagamento fallito, controlla i dati inseriti o verifica la validità della tua carta.');
+                                            'Pagamento fallito, controlla i dati inseriti o verifica la validità della tua carta.'
+                                            );
                                     }
                                 }, 'json');
                             });
                         });
                     });
                 </script>
-
             </form>
         </div>
     </div>

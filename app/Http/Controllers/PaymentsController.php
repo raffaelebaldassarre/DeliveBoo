@@ -1,13 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Dish;
-use Braintree\Transaction;
+use Braintree\Gateway;
 use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
 {
-    
+    protected $gateway;
+
+    // Inietta il Gateway nel costruttore
+    public function __construct(Gateway $gateway)
+    {
+        $this->gateway = $gateway;
+    }
+
     public function process(Request $request)
     {
         $totalOrder = 0;
@@ -25,15 +33,14 @@ class PaymentsController extends Controller
         $payload = $request->input('payload', false);
         $nonce = $payload['nonce'];
 
-        $status = Transaction::sale([
-        'amount' => $totalOrder,
-        'paymentMethodNonce' => $nonce,
-        'options' => [
-            'submitForSettlement' => True
-        ]
+        $status = $this->gateway->transaction()->sale([
+            'amount' => $totalOrder,
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+                'submitForSettlement' => True
+            ]
         ]);
 
         return response()->json($status);
     }
-
 }
