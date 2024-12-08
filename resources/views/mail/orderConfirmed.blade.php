@@ -24,10 +24,14 @@ Ecco il riepilogo del tuo ordine:
 
 Totale: {{ $totalPrice }} €
 
-@component('mail::button', ['url' => env('APP_URL')])
-Vai sul Sito
+@component('mail::button', ['url' => config('app.url')])
+Hai dimenticato qualcosa?
 @endcomponent
 
 Grazie per averci scelto,<br>
 {{ config('app.name') }}
+
+@component('mail::subcopy')
+Se hai ricevuto questa email per errore, ti preghiamo di contattarci.
+@endcomponent
 @endcomponent
